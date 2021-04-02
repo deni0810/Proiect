@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "hrpower-01": {
+      "hosting": {
+        "HRPower10": [
+          "hrpower-01"
+        ]
+      }
+    }
+  }
+}

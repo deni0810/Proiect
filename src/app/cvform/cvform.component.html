@@ -1,0 +1,419 @@
+<head>
+    
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  <style>
+    .mat-form-field{ width: 80%; }
+</style>
+
+</head>
+
+
+
+<div class = "container">
+    <div class = "jumbotron">
+
+        <h1>Curriculum Vitae</h1>
+
+
+
+<form [formGroup]="myForm">
+
+    <!--Value: {{ myForm.value | json }} -->
+
+    <hr>
+
+
+    
+        
+<h2>Personal information</h2>
+
+    
+    <mat-form-field>
+        <label>First name</label>
+        <input matInput   formControlName="fname"  autocomplete="off">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <label>Last name</label>
+        <input matInput   formControlName="lname"  autocomplete="off">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <label>Email</label>
+        <input matInput  formControlName="email"  autocomplete="off">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <label>Country</label>
+        <input matInput   formControlName="country" autocomplete="off">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <label>Town</label>
+        <input matInput   formControlName="town" autocomplete="off">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+        <label>Profession</label>
+        <input matInput   formControlName="profession" autocomplete="off">
+    </mat-form-field>
+
+
+
+    <h2>Hobby</h2>
+    
+
+    <div formArrayName="hobbie">
+
+        <div *ngFor="let hobbie of hobbieForms.controls; let i=index" [formGroupName]="i">
+
+
+            <mat-form-field>
+                <input matInput  formControlName="hobbie" autocomplete="off">
+            </mat-form-field>
+
+
+            <button mat-raised-button color="warn" (click)="deletehobbie('')">Delete</button>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addhobbie()">Add</button>
+
+
+    
+
+
+
+    
+
+    <hr>
+
+    <h2>Skills</h2>
+    
+
+    <div formArrayName="skill">
+
+        <div *ngFor="let skill of skillForms.controls; let i=index" [formGroupName]="i">
+
+
+            <mat-form-field>
+                <label>Skill</label>
+                <input matInput   formControlName="skill" autocomplete="off">
+            </mat-form-field>
+            
+            <mat-form-field>
+                <label>Mastering/Percent</label>
+                <input matInput   formControlName="level" autocomplete="off">
+            </mat-form-field>
+
+
+            <button mat-raised-button color="warn" (click)="deleteskill('')">Delete</button>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addskill()">Add</button>
+
+
+
+    <hr>
+
+    <h2>Languages</h2>
+
+
+    <div formArrayName="language">
+
+        <div *ngFor="let language of languageForms.controls; let i=index" [formGroupName]="i">
+
+
+            <mat-form-field>
+                <label>Language</label>
+                <mat-select formControlName="language" >
+                    <mat-option value="french">French</mat-option>
+                    <mat-option value="german">German</mat-option>
+                    <mat-option value="english">English</mat-option>
+                    <mat-option value="chinese">Chinese</mat-option>
+                    <mat-option value="japanese">Japanese</mat-option>
+                    <mat-option value="corean">Corean</mat-option>
+                    <mat-option value="spanish">Spanish</mat-option>
+                    <mat-option value="romanian">Romanian</mat-option>
+                    <mat-option value="russian">Ruski</mat-option>
+                    <mat-option value="arabic">Arabic</mat-option>
+                    <mat-option value="turkish">Turkish</mat-option>
+                    <mat-option value="italian">Italian</mat-option>
+                    <mat-option value="hungarian">Hungarian</mat-option>
+
+                    
+
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <label>Level</label>
+                <mat-select formControlName="level" >
+                    <mat-option value="working-knowledge">Working knowledge</mat-option>
+                    <mat-option value="good-working-knowledge">Good working knowledge</mat-option>
+                    <mat-option value="very-good-command">Very good command</mat-option>
+                    <mat-option value="highly-proficient-s-w">Highly proficient in speaking and writing</mat-option>
+                    <mat-option value="native">Native</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <button mat-raised-button color="warn" (click)="deletelanguage('')">Delete</button>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addlanguage()">Add</button>
+
+
+    <hr>
+
+    <h2>Experience</h2>
+    <label>Add position, company, date range and details for every job</label>
+
+    <div formArrayName="job">
+
+        <div *ngFor="let job of jobForms.controls; let i=index" [formGroupName]="i">
+
+            
+            <mat-form-field>
+                <label>Title/Position</label>
+                <input matInput   formControlName="title" autocomplete="off">
+            </mat-form-field>
+
+            <br>
+
+            <mat-form-field appearance="fill">
+                <label>Enter a date range</label>
+                <mat-date-range-input  [rangePicker]="picker" formGroupName = "daterange">
+                  <input matStartDate formControlName="start" placeholder="Start date">
+                  <input matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field> <br>
+
+              <mat-form-field>
+                  <label>Company</label>
+                <input matInput    formControlName="company" autocomplete="off">
+            </mat-form-field>
+
+            <br>
+
+            <mat-form-field>
+                <label>Job Details</label>
+                <textarea matInput style="width: 100%;"  formControlName="details"></textarea>
+            </mat-form-field>
+
+
+
+        
+
+            <button mat-raised-button color="warn" (click)="deletejob('')">Delete</button>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addjob()">Add</button>
+
+    <hr>
+
+    <h2>Education</h2>
+    
+
+    <div formArrayName="education">
+
+        <div *ngFor="let education of educationForms.controls; let i=index" [formGroupName]="i">
+
+            <label>Studies</label><br>
+            <mat-form-field>
+                <input matInput placeholder="Ex.:Bachelor of Science"   formControlName="studies" autocomplete="off">
+            </mat-form-field>
+
+
+            <br>
+            <mat-form-field appearance="fill">
+                <label>Enter a date range</label>
+                <mat-date-range-input  [rangePicker]="picker" formGroupName = "daterange">
+                  <input matStartDate formControlName="start" placeholder="Start date">
+                  <input matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+
+              <br>
+
+              <label>Location</label><br>
+            <mat-form-field>
+                <input matInput placeholder="Ex.:France"  formControlName="location" autocomplete="off">
+            </mat-form-field>
+
+            <br>
+
+            <label>Institution/Centre</label><br>
+            <mat-form-field>
+                <input matInput placeholder="Ex.:University of Paris"  formControlName="institution" autocomplete="off">
+            </mat-form-field>
+
+            <br>
+
+            <mat-form-field>
+                <label>Description</label>
+                <textarea matInput style="width: 100%;"   formControlName="description"></textarea>
+            </mat-form-field>
+
+
+
+            
+
+
+
+
+
+
+            
+
+            <button mat-raised-button color="warn" (click)="deleteeducation('')">Delete</button>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addeducation()">Add</button>
+
+
+    <hr>
+
+
+    <h2>Certifications and diplomas</h2>
+    
+
+    <div formArrayName="certification">
+
+        <div *ngFor="let certification of certificationForms.controls; let i=index" [formGroupName]="i">
+
+
+            <mat-form-field>
+                <label>Certification/Diploma</label>
+                <input matInput   formControlName="certification" autocomplete="off">
+            </mat-form-field>
+
+
+            <button mat-raised-button color="warn" (click)="deletecertification('')">Delete</button>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addcertification()">Add</button>
+
+
+    
+
+    <hr>
+
+    <h2>Driver's License</h2>
+    
+
+    <div formArrayName="driver">
+
+        <div *ngFor="let driver of driverForms.controls; let i=index" [formGroupName]="i">
+
+
+            
+
+            <mat-form-field>
+                <label>License</label>
+                <mat-select formControlName="driver" >
+                    <mat-option value="am">AM</mat-option>
+                    <mat-option value="a1">A1</mat-option>
+                    <mat-option value="a2">A2</mat-option>
+                    <mat-option value="a">A</mat-option>
+                    <mat-option value="b">B</mat-option>
+                    <mat-option value="be">BE</mat-option>
+                    <mat-option value="b1">B1</mat-option>
+                    <mat-option value="c1">C1</mat-option>
+                    <mat-option value="c1e">C1E</mat-option>
+                    <mat-option value="c">C</mat-option>
+                    <mat-option value="ce">CE</mat-option>
+                    <mat-option value="d1">D1</mat-option>
+                    <mat-option value="d1e">D1E</mat-option>
+                    <mat-option value="d">D</mat-option>
+                    <mat-option value="de">DE</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+
+            <button mat-raised-button color="warn" (click)="deletedriver('')">Delete</button>
+
+        </div>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="adddriver()">Add</button>
+
+
+    <br>
+
+    <hr>
+
+
+    <br>
+    
+
+    <mat-checkbox class="Check" formControlName = "terms">I agree to the Terms and Conditions</mat-checkbox>
+
+    <br>
+    <br>
+
+
+
+    <!--<button type = "submit" class = "btn btn-primary" [disabled] = "!myForm.valid">Submit</button> -->
+
+    <input type="submit" value="Submit" [disabled]="myForm.invalid" (click)="submitData(myForm.value)"
+                class="btn btn-primary">
+
+    <br>
+
+    <br>
+
+    
+
+
+    
+
+</form>
+
+
+
+</div>
+</div>
+
+
+

@@ -1,0 +1,29 @@
+<div class = "container">
+  <div class = "jumbotron">
+
+<ul>
+  <li *ngFor="let item of items">
+   <b>{{ item.fname}}
+    {{item.lname}}
+    {{item.country}}
+    {{item.town}}
+    {{item.profession}}</b>
+
+    <br>
+
+    <div *ngFor="let education of item.education"  >
+      {{ education.institution}}
+    </div>
+
+    <div *ngFor = "let skill of item.skill" >
+      {{skill.skill}}
+      {{skill.level}}
+    </div>
+    
+  </li>
+</ul>
+
+
+</div>
+</div>
+
