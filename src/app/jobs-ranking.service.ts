@@ -1,29 +1,30 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 interface RecommendedCandidate {
-    id?: string;
-    name: string;
-    skills: Skill[];
+  id?: string;
+  name: string;
+  skills: Skill[];
 }
 
 interface Skill {
-    level: number;
-    skill: string;
+  level: number;
+  skill: string;
 }
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class JobsRankingService {
-    recommendedCandidates: RecommendedCandidate[] = [];
+  recommendedCandidates: RecommendedCandidate[] = [];
+  jobReq: any = [];
+  csv: any = [];
 
+  // USE THIS SERVICE TO COMMUNICATE FRO JOB REQUEST TO CV FORM
 
+  // YOU WILL NEED TO ITERATE THORUGHT CANDIDATES AND TAKE ONLY THE ID, NAME, SKILLS
 
-    // USE THIS SERVICE TO COMMUNICATE FRO JOB REQUEST TO CV FORM
-
-
-    // YOU WILL NEED TO ITERATE THORUGHT CANDIDATES AND TAKE ONLY THE ID, NAME, SKILLS
-
-
-
-    
-
+  compare() {
+    console.log('Apelata din home');
+    console.log(this.jobReq);
+    console.log(this.csv);
+    console.log('-------------');
+  }
 }

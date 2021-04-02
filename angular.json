@@ -133,5 +133,8 @@
       }
     }
   },
-  "defaultProject": "HRPower10"
+  "defaultProject": "HRPower10",
+  "cli": {
+    "analytics": "5b379457-66a5-4cb9-bd8c-12080fe0f80c"
+  }
 }
