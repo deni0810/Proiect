@@ -9,11 +9,7 @@ import { JobsRankingService } from '../jobs-ranking.service';
   styleUrls: ['./jobrequest.component.scss']
 })
 export class JobrequestComponent implements OnInit {
-
-  private submissionForm! : AngularFirestoreCollection<any>;
-
-  
-
+  submissionForm!: AngularFirestoreCollection<any>;
 
   myForm!: FormGroup;
 
@@ -27,9 +23,9 @@ export class JobrequestComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
-    this.submissionForm = this.firestore.collection('JobReq');
+   this.firestore.collection('JobReq').valueChanges().subscribe((response)=>{
+      this.jobsRankingService.jobReq = response;
+    });
 
     this.myForm = this.fb.group({
 

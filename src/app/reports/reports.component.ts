@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { JobsRankingService } from '../jobs-ranking.service';
 //import { Observable } from 'rxjs';
 
  interface Item { name: string; }
@@ -25,7 +26,7 @@ export class ReportsComponent implements OnInit {
   items: any[] = [];
   item: any;
 
-  constructor(private firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore, private jobsRankingService: JobsRankingService) {
    
 
   }
@@ -35,7 +36,10 @@ export class ReportsComponent implements OnInit {
 
     console.log(this.items)
   
-    this.firestore.collection('CVS').valueChanges().subscribe(val => this.items = val);
+    this.firestore.collection('CVS').valueChanges().subscribe((val) => {
+      this.items = val
+      this.jobsRankingService.csv = val;
+    });
     this.itemsCollection.doc('${this.name}').ref.get().then((doc) => {
     this.item = doc.data();
 
