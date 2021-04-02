@@ -23,6 +23,7 @@ import { HomeComponent } from './home/home.component';
 import { JobrequestComponent } from './jobrequest/jobrequest.component';
 import { ReportsComponent } from './reports/reports.component';
 import { CommonModule } from '@angular/common';
+import { RankingComponent } from './ranking/ranking.component';
 
 
 
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'cvform', component: CvformComponent},
   {path: 'jobrequest', component: JobrequestComponent},
-  {path: 'reports', component: ReportsComponent}
+  {path: 'reports', component: ReportsComponent},
+  {path: 'ranking', component: RankingComponent}
   
 
   
@@ -45,6 +47,7 @@ const appRoutes: Routes = [
     HomeComponent,
     JobrequestComponent,
     ReportsComponent,
+    RankingComponent,
     
     
     
