@@ -32,18 +32,18 @@
 
     
         
-<h2>Personal information</h2>
+<h2>Date personale</h2>
 
     
     <mat-form-field>
-        <label>First name</label>
+        <label>Prenume</label>
         <input matInput   formControlName="fname"  autocomplete="off">
     </mat-form-field>
 
     <br>
 
     <mat-form-field>
-        <label>Last name</label>
+        <label>Nume de familie</label>
         <input matInput   formControlName="lname"  autocomplete="off">
     </mat-form-field>
 
@@ -57,21 +57,21 @@
     <br>
 
     <mat-form-field>
-        <label>Country</label>
+        <label>Tara</label>
         <input matInput   formControlName="country" autocomplete="off">
     </mat-form-field>
 
     <br>
 
     <mat-form-field>
-        <label>Town</label>
+        <label>Oras</label>
         <input matInput   formControlName="town" autocomplete="off">
     </mat-form-field>
 
     <br>
 
     <mat-form-field>
-        <label>Profession</label>
+        <label>Profesie</label>
         <input matInput   formControlName="profession" autocomplete="off">
     </mat-form-field>
 
@@ -90,13 +90,13 @@
             </mat-form-field>
 
 
-            <button mat-raised-button color="warn" (click)="deletehobbie('')">Delete</button>
+            <button mat-raised-button color="warn" (click)="deletehobbie('')">Sterge</button>
 
         </div>
 
     </div>
 
-    <button mat-raised-button color="primary" (click)="addhobbie()">Add</button>
+    <button mat-raised-button color="primary" (click)="addhobbie()">Adauga</button>
 
 
     
@@ -107,7 +107,7 @@
 
     <hr>
 
-    <h2>Skills</h2>
+    <h2>Aptitudini</h2>
     
 
     <div formArrayName="skill">
@@ -116,29 +116,29 @@
 
 
             <mat-form-field>
-                <label>Skill</label>
+                <label>Aptitudine</label>
                 <input matInput   formControlName="skill" autocomplete="off">
             </mat-form-field>
             
             <mat-form-field>
-                <label>Mastering/Percent</label>
+                <label>Nivel de performanta</label>
                 <input matInput   formControlName="level" autocomplete="off">
             </mat-form-field>
 
 
-            <button mat-raised-button color="warn" (click)="deleteskill('')">Delete</button>
+            <button mat-raised-button color="warn" (click)="deleteskill('')">Sterge</button>
 
         </div>
 
     </div>
 
-    <button mat-raised-button color="primary" (click)="addskill()">Add</button>
+    <button mat-raised-button color="primary" (click)="addskill()">Adauga</button>
 
 
 
     <hr>
 
-    <h2>Languages</h2>
+    <h2>Limbi straine</h2>
 
 
     <div formArrayName="language">
@@ -147,21 +147,21 @@
 
 
             <mat-form-field>
-                <label>Language</label>
+                <label>Limba straina</label>
                 <mat-select formControlName="language" >
-                    <mat-option value="french">French</mat-option>
-                    <mat-option value="german">German</mat-option>
-                    <mat-option value="english">English</mat-option>
-                    <mat-option value="chinese">Chinese</mat-option>
-                    <mat-option value="japanese">Japanese</mat-option>
-                    <mat-option value="corean">Corean</mat-option>
-                    <mat-option value="spanish">Spanish</mat-option>
-                    <mat-option value="romanian">Romanian</mat-option>
-                    <mat-option value="russian">Ruski</mat-option>
-                    <mat-option value="arabic">Arabic</mat-option>
-                    <mat-option value="turkish">Turkish</mat-option>
-                    <mat-option value="italian">Italian</mat-option>
-                    <mat-option value="hungarian">Hungarian</mat-option>
+                    <mat-option value="french">Franceza</mat-option>
+                    <mat-option value="german">Germana</mat-option>
+                    <mat-option value="english">Engleza</mat-option>
+                    <mat-option value="chinese">Chineza</mat-option>
+                    <mat-option value="japanese">Japoneza</mat-option>
+                    <mat-option value="corean">Coreana</mat-option>
+                    <mat-option value="spanish">Spaniola</mat-option>
+                    <mat-option value="romanian">Romana</mat-option>
+                    <mat-option value="russian">Rusa</mat-option>
+                    <mat-option value="arabic">Araba</mat-option>
+                    <mat-option value="turkish">Turca</mat-option>
+                    <mat-option value="italian">Italiana</mat-option>
+                    <mat-option value="hungarian">Maghiara</mat-option>
 
                     
 
@@ -169,30 +169,30 @@
             </mat-form-field>
 
             <mat-form-field>
-                <label>Level</label>
+                <label>Nivel</label>
                 <mat-select formControlName="level" >
-                    <mat-option value="working-knowledge">Working knowledge</mat-option>
-                    <mat-option value="good-working-knowledge">Good working knowledge</mat-option>
-                    <mat-option value="very-good-command">Very good command</mat-option>
-                    <mat-option value="highly-proficient-s-w">Highly proficient in speaking and writing</mat-option>
-                    <mat-option value="native">Native</mat-option>
+                    <mat-option value="working-knowledge">Cunostinte practice</mat-option>
+                    <mat-option value="good-working-knowledge">Cunostinte practice bune</mat-option>
+                    <mat-option value="very-good-command">Stapanire foarte buna a limbii</mat-option>
+                    <mat-option value="highly-proficient-s-w">Stapanire foarte buna a limbii,scris si oral</mat-option>
+                    <mat-option value="native">Nativ</mat-option>
                 </mat-select>
             </mat-form-field>
 
 
-            <button mat-raised-button color="warn" (click)="deletelanguage('')">Delete</button>
+            <button mat-raised-button color="warn" (click)="deletelanguage('')">Sterge</button>
 
         </div>
 
     </div>
 
-    <button mat-raised-button color="primary" (click)="addlanguage()">Add</button>
+    <button mat-raised-button color="primary" (click)="addlanguage()">Adauga</button>
 
 
     <hr>
 
-    <h2>Experience</h2>
-    <label>Add position, company, date range and details for every job</label>
+    <h2>Experienta</h2>
+    <label>Adaugati titlul, compania si durata pentru fiecare job</label>
 
     <div formArrayName="job">
 
@@ -200,14 +200,14 @@
 
             
             <mat-form-field>
-                <label>Title/Position</label>
+                <label>Titlu/Pozitie</label>
                 <input matInput   formControlName="title" autocomplete="off">
             </mat-form-field>
 
             <br>
 
             <mat-form-field appearance="fill">
-                <label>Enter a date range</label>
+                <label>Introduceti durata de timp</label>
                 <mat-date-range-input  [rangePicker]="picker" formGroupName = "daterange">
                   <input matStartDate formControlName="start" placeholder="Start date">
                   <input matEndDate formControlName="end" placeholder="End date">
@@ -217,14 +217,14 @@
               </mat-form-field> <br>
 
               <mat-form-field>
-                  <label>Company</label>
+                  <label>Numele companiei</label>
                 <input matInput    formControlName="company" autocomplete="off">
             </mat-form-field>
 
             <br>
 
             <mat-form-field>
-                <label>Job Details</label>
+                <label>Detalii despre job</label>
                 <textarea matInput style="width: 100%;"  formControlName="details"></textarea>
             </mat-form-field>
 
@@ -232,32 +232,32 @@
 
         
 
-            <button mat-raised-button color="warn" (click)="deletejob('')">Delete</button>
+            <button mat-raised-button color="warn" (click)="deletejob('')">Sterge</button>
 
         </div>
 
     </div>
 
-    <button mat-raised-button color="primary" (click)="addjob()">Add</button>
+    <button mat-raised-button color="primary" (click)="addjob()">Adauga</button>
 
     <hr>
 
-    <h2>Education</h2>
+    <h2>Educatie</h2>
     
 
     <div formArrayName="education">
 
         <div *ngFor="let education of educationForms.controls; let i=index" [formGroupName]="i">
 
-            <label>Studies</label><br>
+            <label>Introduceti domeniul de studii</label><br>
             <mat-form-field>
-                <input matInput placeholder="Ex.:Bachelor of Science"   formControlName="studies" autocomplete="off">
+                <input matInput placeholder="Ex.:Telecomunicatii"   formControlName="studies" autocomplete="off">
             </mat-form-field>
 
 
             <br>
             <mat-form-field appearance="fill">
-                <label>Enter a date range</label>
+                <label>Introduceti durata de timp</label>
                 <mat-date-range-input  [rangePicker]="picker" formGroupName = "daterange">
                   <input matStartDate formControlName="start" placeholder="Start date">
                   <input matEndDate formControlName="end" placeholder="End date">
@@ -268,22 +268,22 @@
 
               <br>
 
-              <label>Location</label><br>
+              <label>Locatia</label><br>
             <mat-form-field>
-                <input matInput placeholder="Ex.:France"  formControlName="location" autocomplete="off">
+                <input matInput placeholder="Ex.:Brasov"  formControlName="location" autocomplete="off">
             </mat-form-field>
 
             <br>
 
-            <label>Institution/Centre</label><br>
+            <label>Institutia de invatamant</label><br>
             <mat-form-field>
-                <input matInput placeholder="Ex.:University of Paris"  formControlName="institution" autocomplete="off">
+                <input matInput placeholder="Ex.:Universitatea Transilvania"  formControlName="institution" autocomplete="off">
             </mat-form-field>
 
             <br>
 
             <mat-form-field>
-                <label>Description</label>
+                <label>Descriere/Detalii</label>
                 <textarea matInput style="width: 100%;"   formControlName="description"></textarea>
             </mat-form-field>
 
@@ -298,19 +298,19 @@
 
             
 
-            <button mat-raised-button color="warn" (click)="deleteeducation('')">Delete</button>
+            <button mat-raised-button color="warn" (click)="deleteeducation('')">Sterge</button>
 
         </div>
 
     </div>
 
-    <button mat-raised-button color="primary" (click)="addeducation()">Add</button>
+    <button mat-raised-button color="primary" (click)="addeducation()">Adauga</button>
 
 
     <hr>
 
 
-    <h2>Certifications and diplomas</h2>
+    <h2>Certificari si diplome</h2>
     
 
     <div formArrayName="certification">
@@ -319,25 +319,25 @@
 
 
             <mat-form-field>
-                <label>Certification/Diploma</label>
+                <label>CertificareDiploma</label>
                 <input matInput   formControlName="certification" autocomplete="off">
             </mat-form-field>
 
 
-            <button mat-raised-button color="warn" (click)="deletecertification('')">Delete</button>
+            <button mat-raised-button color="warn" (click)="deletecertification('')">Sterge</button>
 
         </div>
 
     </div>
 
-    <button mat-raised-button color="primary" (click)="addcertification()">Add</button>
+    <button mat-raised-button color="primary" (click)="addcertification()">Adauga</button>
 
 
     
 
     <hr>
 
-    <h2>Driver's License</h2>
+    <h2>Carnet de conducere auto</h2>
     
 
     <div formArrayName="driver">
@@ -348,7 +348,7 @@
             
 
             <mat-form-field>
-                <label>License</label>
+                <label>Categoria</label>
                 <mat-select formControlName="driver" >
                     <mat-option value="am">AM</mat-option>
                     <mat-option value="a1">A1</mat-option>
@@ -370,13 +370,13 @@
             </mat-form-field>
 
 
-            <button mat-raised-button color="warn" (click)="deletedriver('')">Delete</button>
+            <button mat-raised-button color="warn" (click)="deletedriver('')">Sterge</button>
 
         </div>
 
     </div>
 
-    <button mat-raised-button color="primary" (click)="adddriver()">Add</button>
+    <button mat-raised-button color="primary" (click)="adddriver()">Adauga</button>
 
 
     <br>
@@ -387,7 +387,7 @@
     <br>
     
 
-    <mat-checkbox class="Check" formControlName = "terms">I agree to the Terms and Conditions</mat-checkbox>
+    <mat-checkbox class="Check" formControlName = "terms">Accept termenii si conditiile</mat-checkbox>
 
     <br>
     <br>

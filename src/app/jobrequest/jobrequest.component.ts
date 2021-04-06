@@ -153,7 +153,7 @@ export class JobrequestComponent implements OnInit {
     this.submitting = true;
     this.submissionForm.add(value).then(res => {
       this.submitted = true;
-      console.log("Succes!");
+      alert("Succes!");
     }).catch(err => console.log(err)
     ).finally(() => {
       this.submitting = false;
