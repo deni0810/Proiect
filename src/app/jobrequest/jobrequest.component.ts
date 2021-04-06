@@ -27,6 +27,8 @@ export class JobrequestComponent implements OnInit {
       this.jobsRankingService.jobReq = response;
     });
 
+    this.submissionForm = this.firestore.collection('JobReq');
+
     this.myForm = this.fb.group({
 
       aboutcompany: ['', Validators.required],
@@ -148,7 +150,7 @@ export class JobrequestComponent implements OnInit {
 
   submitData(value:any){
    
-    console.log(this.submissionForm);
+    console.log(this.submitted);
 
     this.submitting = true;
     this.submissionForm.add(value).then(res => {
