@@ -148,7 +148,7 @@ export class JobrequestComponent implements OnInit {
 
   submitData(value:any){
    
-    console.log(this.submitted);
+    console.log(this.submissionForm);
 
     this.submitting = true;
     this.submissionForm.add(value).then(res => {
@@ -161,11 +161,6 @@ export class JobrequestComponent implements OnInit {
 
   }
   
-
-
-
-  
-
 
 
 
