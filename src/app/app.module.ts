@@ -24,6 +24,8 @@ import { JobrequestComponent } from './jobrequest/jobrequest.component';
 import { ReportsComponent } from './reports/reports.component';
 import { CommonModule } from '@angular/common';
 import { RankingComponent } from './ranking/ranking.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 
 
@@ -34,10 +36,12 @@ const appRoutes: Routes = [
   {path: 'cvform', component: CvformComponent},
   {path: 'jobrequest', component: JobrequestComponent},
   {path: 'reports', component: ReportsComponent},
-  {path: 'ranking', component: RankingComponent}
-  
+  {path: 'ranking', component: RankingComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
 
-  
+
+
   ];
 
 @NgModule({
@@ -48,9 +52,11 @@ const appRoutes: Routes = [
     JobrequestComponent,
     ReportsComponent,
     RankingComponent,
-    
-    
-    
+    LoginComponent,
+    RegisterComponent,
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -68,7 +74,7 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]
