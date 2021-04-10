@@ -1,2 +1,5 @@
-<h1>BUTON!</h1>
-<!-- <button (click)="onSignup()">Signup</button> -->
+<form [formGroup]="authForm" (ngSubmit)="onSignup()">
+  <input formControlName="email" placeholder="Email">
+  <input type="password" formControlName="password" placeholder="Password">
+  <button type="submit">Signup</button>
+</form>

@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -75,6 +75,7 @@ const appRoutes: Routes = [
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     CommonModule,
+    HttpClientModule,
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]

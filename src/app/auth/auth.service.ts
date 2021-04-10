@@ -18,4 +18,3 @@ export class AuthService {
 
     }
 }
-//https://www.googleapis.com/identitytoolkit/v3/relyingparty
