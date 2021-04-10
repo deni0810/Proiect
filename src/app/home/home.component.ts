@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { JobsRankingService } from '../jobs-ranking.service';
 
 @Component({
   selector: 'home',
@@ -8,10 +7,8 @@ import { JobsRankingService } from '../jobs-ranking.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private jobsRankingService: JobsRankingService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.jobsRankingService.compare();
-  }
+  ngOnInit(): void {}
 
 }

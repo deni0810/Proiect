@@ -4,17 +4,15 @@ import { JobsRankingService } from '../jobs-ranking.service';
 @Component({
   selector: 'app-ranking',
   templateUrl: './ranking.component.html',
-  styleUrls: ['./ranking.component.scss']
+  styleUrls: ['./ranking.component.scss'],
 })
 export class RankingComponent implements OnInit {
-
-  constructor(private service: JobsRankingService) { 
-    this.service.cv$.subscribe((cv)=>{
-      console.log(cv);
-    });
-  }
+  constructor(private jobsRankingService: JobsRankingService) {}
 
   ngOnInit(): void {
+    this.jobsRankingService.compare();
+    this.jobsRankingService.cv$.subscribe((cvArray) => {
+      console.log(cvArray); // aici ai lista
+    });
   }
-
 }
