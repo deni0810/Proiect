@@ -35,6 +35,7 @@ export class AuthService {
 
   handleAuthentification(data: any) {
     localStorage.setItem('userData', JSON.stringify(data));
+    this.userSubject$.next(data);
   }
 
   autologin() {
