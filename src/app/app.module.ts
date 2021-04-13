@@ -8,10 +8,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { Routes,RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreModule,
+} from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -26,23 +29,21 @@ import { CommonModule } from '@angular/common';
 import { RankingComponent } from './ranking/ranking.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-
-
-
-
+import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'cvform', component: CvformComponent},
-  {path: 'jobrequest', component: JobrequestComponent},
-  {path: 'reports', component: ReportsComponent},
-  {path: 'ranking', component: RankingComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-
-
-
-  ];
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'cvform', component: CvformComponent, canActivate: [AuthGuard] },
+  {
+    path: 'jobrequest',
+    component: JobrequestComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard] },
+  { path: 'ranking', component: RankingComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+];
 
 @NgModule({
   declarations: [
@@ -54,9 +55,6 @@ const appRoutes: Routes = [
     RankingComponent,
     LoginComponent,
     RegisterComponent,
-
-
-
   ],
   imports: [
     BrowserModule,
@@ -78,6 +76,6 @@ const appRoutes: Routes = [
     HttpClientModule,
   ],
   providers: [AngularFirestore],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
