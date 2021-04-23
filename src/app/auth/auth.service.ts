@@ -38,46 +38,42 @@ export class AuthService {
   }
 
   handleAuthentification(data: any) {
+    const expirationDate = new Date(new Date().getTime() + +expiresIn * 1000);
     localStorage.setItem('userData', JSON.stringify(data));
     this.userSubject$.next(data);
+    this.autologout(+expiresIn * 1000);
   }
 
   autologin() {
     const user = JSON.parse(localStorage.getItem('userData')!);
     this.userSubject$.next(user);
-    //! Sterge asta
-    // Asa o sa folosesti acel user. Mai sus ii atribui o valoare, iar mai jos, o citesti
     this.user$.subscribe((user) => {
       console.log(user);
-    //   const expirationDuration =
-    //   new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
-    // if (expirationDuration < 0) {
-    //   this.logout();
       return;
     });
-    //!
+  
 
 
   }
 
-  // logout() {
-  //   const user = JSON.parse(localStorage.getItem('userData')!);
-  //   localStorage.removeItem('userData');
-  //   this.router.navigate(['/login']);
-  // }
+  logout() {
+    const user = JSON.parse(localStorage.getItem('userData')!);
+    localStorage.removeItem('userData');
+    this.router.navigate(['/login']);
+  }
 
-  //  autologout(expirationDuration:number){
-  //   const user = JSON.parse(localStorage.getItem('userData')!);
-  //   // const expirationDuration =
-  //   //   new Date(user._tokenExpirationDate).getTime() - new Date().getTime();
-  //   //   if (expirationDuration < 0) {
-  //   //     localStorage.removeItem('userData');
-  //   //     return;
-  //   //   }
-  //   setTimeout(() => {
-  //     this.logout();
-  //   }, expirationDuration);
-  //  }
+   autologout(expirationDuration:number){
+    const user = JSON.parse(localStorage.getItem('userData')!);
+     expirationDuration =
+      new Date(user._tokenExpirationDate).getTime() - new Date().getTime();
+      if (expirationDuration < 0) {
+        localStorage.removeItem('userData');
+        return;
+      }
+    setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
+   }
 
 
 }
