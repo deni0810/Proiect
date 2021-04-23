@@ -9,11 +9,9 @@ import { Router } from '@angular/router';
 export class AuthService {
   private userSubject$ = new BehaviorSubject<IUser>(null!);
   public user$: Observable<IUser> = this.userSubject$.asObservable();
-  router: any;
   tokenExpirationTimer: any;
 
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   signup(email: string, password: string) {
     return this.http.post(
@@ -38,42 +36,60 @@ export class AuthService {
   }
 
   handleAuthentification(data: any) {
-    const expirationDate = new Date(new Date().getTime() + +expiresIn * 1000);
-    localStorage.setItem('userData', JSON.stringify(data));
-    this.userSubject$.next(data);
-    this.autologout(+expiresIn * 1000);
+    const {
+      email,
+      password,
+      id,
+      history,
+      categories,
+      favorites,
+      isAdmin,
+      token,
+      expiresIn,
+    } = data;
+    const expirationDate = new Date(new Date().getTime() + +expiresIn * 1); // aici trebuie 1000 nu 1, am pus 1 doar pentru a te deconecta mai repede si a vedea cum merge
+    const user = {
+      email,
+      password,
+      id,
+      history,
+      categories,
+      favorites,
+      isAdmin,
+      token,
+      expirationDate,
+    };
+    localStorage.setItem('userData', JSON.stringify(user));
+    this.userSubject$.next(user);
+    this.autologout(+expiresIn * 1); // aici trebuie 1000 nu 1, am pus 1 doar pentru a te deconecta mai repede si a vedea cum merge
   }
 
   autologin() {
     const user = JSON.parse(localStorage.getItem('userData')!);
-    this.userSubject$.next(user);
-    this.user$.subscribe((user) => {
-      console.log(user);
-      return;
-    });
-  
-
-
+    if (user === null) {
+      this.router.navigate(['login']);
+    } else {
+      const expirationDuration =
+        new Date(user._tokenExpirationDate).getTime() - new Date().getTime();
+      if (expirationDuration < 0) {
+        this.logout();
+      }
+      if (user.token) {
+        this.userSubject$.next(user);
+        this.autologout(expirationDuration);
+      }
+    }
   }
 
   logout() {
-    const user = JSON.parse(localStorage.getItem('userData')!);
+    this.userSubject$.next(null!);
     localStorage.removeItem('userData');
     this.router.navigate(['/login']);
   }
 
-   autologout(expirationDuration:number){
-    const user = JSON.parse(localStorage.getItem('userData')!);
-     expirationDuration =
-      new Date(user._tokenExpirationDate).getTime() - new Date().getTime();
-      if (expirationDuration < 0) {
-        localStorage.removeItem('userData');
-        return;
-      }
+  autologout(expirationDuration: number) {
     setTimeout(() => {
       this.logout();
     }, expirationDuration);
-   }
-
-
+  }
 }
