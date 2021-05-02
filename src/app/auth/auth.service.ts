@@ -40,28 +40,20 @@ export class AuthService {
       email,
       password,
       id,
-      history,
-      categories,
-      favorites,
-      isAdmin,
       token,
       expiresIn,
     } = data;
-    const expirationDate = new Date(new Date().getTime() + +expiresIn * 1); // aici trebuie 1000 nu 1, am pus 1 doar pentru a te deconecta mai repede si a vedea cum merge
+    const expirationDate = new Date(new Date().getTime() + +expiresIn * 1000); // aici trebuie 1000 nu 1, am pus 1 doar pentru a te deconecta mai repede si a vedea cum merge
     const user = {
       email,
       password,
       id,
-      history,
-      categories,
-      favorites,
-      isAdmin,
       token,
       expirationDate,
     };
     localStorage.setItem('userData', JSON.stringify(user));
     this.userSubject$.next(user);
-    this.autologout(+expiresIn * 1); // aici trebuie 1000 nu 1, am pus 1 doar pentru a te deconecta mai repede si a vedea cum merge
+    this.autologout(+expiresIn * 1000); // aici trebuie 1000 nu 1, am pus 1 doar pentru a te deconecta mai repede si a vedea cum merge
   }
 
   autologin() {
