@@ -14,14 +14,18 @@
 
 <div class = "container">
   <div class = "jumbotron">
-<h1 style="text-align: center;">Rapoarte</h1>
+<h1 style="text-align: center;">Baza de date</h1>
+<hr>
 <br>
 <ul>
   <li *ngFor="let item of items">
    <b>{{ item.fname}}
     {{item.lname}}
+    <br>
     {{item.country}}
+    <br>
     {{item.town}}
+    <br>
     {{item.profession}}</b>
 
     <br>
@@ -34,6 +38,8 @@
       {{skill.skill}}
       {{skill.level}}
     </div>
+
+    <hr>
 
   </li>
 </ul>
