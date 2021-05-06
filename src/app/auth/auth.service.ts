@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { IUser } from '../shared/interfaces/user.interface';
 import { Router } from '@angular/router';
+import { IAuthResponse } from '../shared/interfaces/auth-response.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -14,7 +15,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   signup(email: string, password: string) {
-    return this.http.post(
+    return this.http.post<IAuthResponse>(
       `${environment.firebaseConfig.authAPI}/signupNewUser?key=${environment.firebaseConfig.apiKey}`,
       {
         email: email,
@@ -25,7 +26,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return this.http.post(
+    return this.http.post<IAuthResponse>(
       `${environment.firebaseConfig.authAPI}/verifyPassword?key=${environment.firebaseConfig.apiKey}`,
       {
         email: email,
@@ -43,7 +44,7 @@ export class AuthService {
       token,
       expiresIn,
     } = data;
-    const expirationDate = new Date(new Date().getTime() + +expiresIn * 1000); // aici trebuie 1000 nu 1, am pus 1 doar pentru a te deconecta mai repede si a vedea cum merge
+    const expirationDate = new Date(new Date().getTime() + +expiresIn * 1000);
     const user = {
       email,
       password,
@@ -53,7 +54,7 @@ export class AuthService {
     };
     localStorage.setItem('userData', JSON.stringify(user));
     this.userSubject$.next(user);
-    this.autologout(+expiresIn * 1000); // aici trebuie 1000 nu 1, am pus 1 doar pentru a te deconecta mai repede si a vedea cum merge
+    this.autologout(+expiresIn * 1000);
   }
 
   autologin() {
