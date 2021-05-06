@@ -9,7 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  
+
 </head>
 
 <div class="container">
@@ -29,8 +29,17 @@
         <input matInput type="password" formControlName="password" />
       </mat-form-field>
       <br />
+      <mat-form-field>
+        <h2>Rol</h2>
+        <mat-select formControlName="rol">
+          <mat-option value="angajat">Angajat</mat-option>
+          <mat-option value="angajator">Angajator</mat-option>
+      </mat-select>
+      </mat-form-field>
       <br />
       <button class="btn btn-primary" type="submit">Register</button>
+      <!--<input type="submit" value="Submit" [disabled]="authForm.invalid" (click)="onSignup(authForm.value)"
+                class="btn btn-primary"> -->
     </form>
   </div>
 </div>
