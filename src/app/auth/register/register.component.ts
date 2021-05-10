@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { UserService } from 'src/app/user.service';
+import { IProfile } from 'src/app/shared/interfaces/profile.interface';
 
 
 
@@ -31,7 +32,7 @@ export class RegisterComponent {
       this.authService.handleAuthentification(response);
       this.router.navigate(['home']);
       console.log(response);
-      const user = {
+      const user: IProfile = {
 
         rol: this.authForm.value.rol,
         id: response.localId

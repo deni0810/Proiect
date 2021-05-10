@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
     private formBuilder: FormBuilder,
     private router: Router
   ) {
@@ -24,6 +26,8 @@ export class LoginComponent {
     const password = this.authForm.value.password;
     this.authService.login(email, password).subscribe((response)=>{
       this.authService.handleAuthentification(response);
+      this.userService.getProfile(response.localId);
+      console.log(response.localId);
       this.router.navigate(['home']);
     });
   }
