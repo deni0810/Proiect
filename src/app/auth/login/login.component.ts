@@ -7,7 +7,7 @@ import { UserService } from 'src/app/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   authForm!: FormGroup;
@@ -24,10 +24,11 @@ export class LoginComponent {
   onLogin() {
     const email = this.authForm.value.email;
     const password = this.authForm.value.password;
-    this.authService.login(email, password).subscribe((response)=>{
+    this.authService.login(email, password).subscribe((response) => {
       this.authService.handleAuthentification(response);
-      this.userService.getProfile(response.localId);
-      console.log(response.localId);
+      this.userService.getProfile(response.localId).subscribe((user) => {
+        localStorage.setItem('userData', JSON.stringify(user));
+      });
       this.router.navigate(['home']);
     });
   }
@@ -38,5 +39,4 @@ export class LoginComponent {
       password: [null, Validators.required],
     });
   }
-
 }

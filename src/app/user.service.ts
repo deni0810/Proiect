@@ -10,18 +10,14 @@ import { IUser } from './shared/interfaces/user.interface';
 export class UserService {
   constructor(private firestore: AngularFirestore) {}
 
-  getProfile(id: any) {
-    const userData =  this.firestore
+  getProfile(id: string) {
+    return this.firestore
       .collection<IUser>('profiles', (ref) => ref.where('id', '==', id))
       .valueChanges({ idField: 'docId' });
-      //return userData;
-      console.log(userData);
   }
 
   saveAccount(user: IProfile) {
     this.firestore.collection('profiles').add(user);
     localStorage.setItem('userData', JSON.stringify(user));
   }
-
-  
 }
