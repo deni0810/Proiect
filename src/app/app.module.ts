@@ -30,7 +30,9 @@ import { RankingComponent } from './ranking/ranking.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthGuard } from './auth/auth.guard';
-import { ProfileComponent } from './profile/profile.component';
+import { EmployerprofileComponent } from './employerprofile/employerprofile.component';
+import { EmployeeprofileComponent } from './employeeprofile/employeeprofile.component';
+
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -44,6 +46,8 @@ const appRoutes: Routes = [
   { path: 'ranking', component: RankingComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'employee', component: EmployeeprofileComponent},
+  { path: 'employer', component: EmployerprofileComponent},
 ];
 
 @NgModule({
@@ -56,7 +60,9 @@ const appRoutes: Routes = [
     RankingComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent,
+    EmployerprofileComponent,
+    EmployeeprofileComponent
+
   ],
   imports: [
     BrowserModule,

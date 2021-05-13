@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { UserService } from 'src/app/user.service';
+import { IUser } from 'src/app/shared/interfaces/user.interface';
+import { IProfile } from 'src/app/shared/interfaces/profile.interface';
+
 
 @Component({
   selector: 'app-login',
@@ -28,8 +31,20 @@ export class LoginComponent {
       this.authService.handleAuthentification(response);
       this.userService.getProfile(response.localId).subscribe((user) => {
         localStorage.setItem('userData', JSON.stringify(user));
+        if(user.rol == 'angajat')
+        {
+          //this.router.navigate(['employee']);
+          console.log(user.rol);
+        }
+         else if(user.rol == 'angajator'){
+          this.router.navigate(['employer']);
+        }
+
       });
-      this.router.navigate(['home']);
+      //this.router.navigate(['home']);
+
+
+
     });
   }
 

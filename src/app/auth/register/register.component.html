@@ -21,12 +21,12 @@
     <form [formGroup]="authForm" (ngSubmit)="onSignup()">
       <mat-form-field>
         <h2>Email</h2>
-        <input matInput formControlName="email" />
+        <input matInput formControlName="email" autocomplete="off" />
       </mat-form-field>
       <br />
       <mat-form-field>
         <h2>Parola</h2>
-        <input matInput type="password" formControlName="password" />
+        <input matInput type="password" formControlName="password" autocomplete="off" />
       </mat-form-field>
       <br />
       <mat-form-field>
