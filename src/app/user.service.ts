@@ -12,7 +12,7 @@ export class UserService {
 
   getProfile(id: string) {
     return this.firestore
-      .collection<IUser>('profiles', (ref) => ref.where('id', '==', id))
+      .collection<IProfile>('profiles', (ref) => ref.where('id', '==', id))
       .valueChanges({ idField: 'docId' });
   }
 
