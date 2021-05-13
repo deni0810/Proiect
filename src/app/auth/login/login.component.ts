@@ -36,6 +36,7 @@ export class LoginComponent {
         } else if (user.rol == 'angajator') {
           this.router.navigate(['employer']);
         }
+        
       });
     });
   }
