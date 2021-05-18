@@ -6,6 +6,7 @@ import { UserService } from 'src/app/user.service';
 import { IUser } from 'src/app/shared/interfaces/user.interface';
 import { IProfile } from 'src/app/shared/interfaces/profile.interface';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -36,7 +37,7 @@ export class LoginComponent {
         } else if (user.rol == 'angajator') {
           this.router.navigate(['employer']);
         }
-        
+
       });
     });
   }
