@@ -33,6 +33,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { EmployerprofileComponent } from './employerprofile/employerprofile.component';
 import { EmployeeprofileComponent } from './employeeprofile/employeeprofile.component';
 import { AvailablejobsComponent } from './availablejobs/availablejobs.component';
+import { JobdetailsComponent } from './jobdetails/jobdetails.component';
 
 
 const appRoutes: Routes = [
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
   { path: 'employee', component: EmployeeprofileComponent},
   { path: 'employer', component: EmployerprofileComponent},
   { path: 'availablejobs', component: AvailablejobsComponent},
+  { path: 'jobdetails', component: JobdetailsComponent},
 ];
 
 @NgModule({
@@ -64,7 +66,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     EmployerprofileComponent,
     EmployeeprofileComponent,
-    AvailablejobsComponent
+    AvailablejobsComponent,
+    JobdetailsComponent
 
   ],
   imports: [

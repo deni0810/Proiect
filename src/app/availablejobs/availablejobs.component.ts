@@ -4,6 +4,8 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/firestore';
 import { JobsRankingService } from '../jobs-ranking.service';
+import { JobdetailsComponent } from 'src/app/jobdetails/jobdetails.component';
+import { MatDialog } from '@angular/material/dialog';
 
 interface Item {
   name: string;
@@ -27,8 +29,18 @@ export class AvailablejobsComponent implements OnInit {
 
   constructor(
     private firestore: AngularFirestore,
-    private jobsRankingService: JobsRankingService
+    private jobsRankingService: JobsRankingService,
+    public dialog: MatDialog,
   ) {}
+
+
+  openJobDetails() {
+    this.dialog.open(JobdetailsComponent, {
+      width: '800px',
+      panelClass: 'modal-no-padding',
+      // data: this.job,
+    });
+  }
 
   ngOnInit() {
     this.itemsCollection = this.firestore.collection('JobReq');
@@ -48,5 +60,12 @@ export class AvailablejobsComponent implements OnInit {
       .then((doc) => {
         this.item = doc.data();
       });
+
+
+
   }
+
+
 }
+
+
