@@ -34,11 +34,11 @@ export class AvailablejobsComponent implements OnInit {
   ) {}
 
 
-  openJobDetails() {
+  openJobDetails(index: number) {
     this.dialog.open(JobdetailsComponent, {
       width: '800px',
       panelClass: 'modal-no-padding',
-      // data: this.job,
+      data: this.items[index],
     });
   }
 

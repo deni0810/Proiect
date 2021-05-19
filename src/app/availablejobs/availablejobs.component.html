@@ -17,7 +17,7 @@
     <hr />
     <br />
     <ul>
-      <li *ngFor="let item of items">
+      <li *ngFor="let item of items; let i = index">
         <b
           >{{ item.aboutjob }}
           {{ item.aboutcompany }}
@@ -44,7 +44,7 @@
 
         <div>
 
-          <input type = "button" value = "Details" (click) = "openJobDetails()" class = "btn btn-primary" >
+          <input type = "button" value = "Details" (click)="openJobDetails(i)" class = "btn btn-primary" >
         </div>
 
         <hr />
