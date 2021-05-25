@@ -27,15 +27,15 @@ interface JOB {
 export class AvailablejobsComponent implements OnInit {
   [x: string]: any;
   private itemsCollection!: AngularFirestoreCollection<Item>;
-   items: any[] = [];
-   item: any;
+  items: any[] = [];
+  item: any;
 
   constructor(
     private firestore: AngularFirestore,
     private jobsRankingService: JobsRankingService,
     public dialog: MatDialog,
+    private service: JobsService
   ) {}
-
 
   openJobDetails(index: number) {
     this.dialog.open(JobdetailsComponent, {
@@ -45,19 +45,18 @@ export class AvailablejobsComponent implements OnInit {
     });
   }
 
-  Aplica(){
-
-    // const userId = JSON.parse(localStorage.getItem('userData')).id;
-    //     this.jobsService.addApplication(userId, this.job, docId);
-    //     alert('Ai aplicat la acest job!');
-
+  Aplica(item: any) {
+    const user = JSON.parse(localStorage.getItem('userData')!);
+    this.service.addApplication(user.id, item.id, user.docId);
+    alert('Ai aplicat la acest job!');
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.service.getAllJobs().subscribe((response)=>{
+      this.items = response;
+    });
     // this.itemsCollection = this.firestore.collection('JobReq');
-
     // console.log(this.items);
-
     // this.firestore
     //   .collection('JobReq')
     //   .valueChanges()
@@ -71,14 +70,5 @@ export class AvailablejobsComponent implements OnInit {
     //   .then((doc) => {
     //     this.item = doc.data();
     //   });
-
-
-
   }
-
-
 }
-
-
-
-

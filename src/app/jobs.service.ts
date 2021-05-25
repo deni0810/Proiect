@@ -12,7 +12,8 @@ import { JobsRankingService } from 'src/app/jobs-ranking.service';
 import { UserService } from 'src/app/user.service';
 import { JobdetailsComponent } from 'src/app/jobdetails/jobdetails.component';
 import { MatDialog } from '@angular/material/dialog';
-import * as firebase from 'firebase';
+import firebase from 'firebase';
+import { IJob } from './shared/interfaces/job.interface';
 
 interface Item {
   name: string;
@@ -45,33 +46,49 @@ export class JobsService {
     public dialog: MatDialog
   ) {}
 
-  ngOnInit() {
-    this.itemsCollection = this.firestore.collection('JobReq');
+  //! nu e ok
+  // ngOnInit() {
+  //   this.itemsCollection = this.firestore.collection('JobReq');
 
-    console.log(this.items);
+  //   console.log(this.items);
 
-    this.firestore
-      .collection('JobReq')
-      .valueChanges()
-      .subscribe((val) => {
-        this.items = val;
-        this.jobsRankingService.csv = val;
-      });
-    this.itemsCollection
-      .doc('${this.name}')
-      .ref.get()
-      .then((doc) => {
-        this.item = doc.data();
-      });
+  //   this.firestore
+  //     .collection('JobReq')
+  //     .valueChanges()
+  //     .subscribe((val) => {
+  //       this.items = val;
+  //       this.jobsRankingService.csv = val;
+  //     });
+  //   this.itemsCollection
+  //     .doc('${this.name}')
+  //     .ref.get()
+  //     .then((doc) => {
+  //       this.item = doc.data();
+  //     });
+  // }
+
+  getAllJobs() {
+    const ref = this.firestore.collection('JobReq');
+    return ref.valueChanges({ idField: 'id' });
   }
 
-  public async addApplication(userId: any, job: { id: any; }, userDocId: any) {
+  public async addApplication(userId: string, job: IJob, userDocId: string) {
     const jobId = job.id;
-    const jobRef = this.db.collection('jobs').doc(jobId);
-    const jobUnionRes = await jobRef.update({
+    const jobRef = this.firestore.collection('JobReq').doc(jobId);
+    await jobRef.update({
       jobCandidates: firebase.firestore.FieldValue.arrayUnion(userId),
     });
 
-}
-
+    const userRef = this.firestore.collection('profiles').doc(userDocId);
+    await userRef.update({
+      appliedJobs: firebase.firestore.FieldValue.arrayUnion(job),
+    });
+    let userData = JSON.parse(localStorage.getItem('userData')!);
+    try {
+      userData.appliedJobs.push(job);
+    } catch {
+      userData.appliedJobs = [job];
+    }
+    localStorage.setItem('userData', JSON.stringify(userData));
+  }
 }
