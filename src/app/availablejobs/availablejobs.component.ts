@@ -4,8 +4,10 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/firestore';
 import { JobsRankingService } from '../jobs-ranking.service';
+import { UserService } from '../user.service';
 import { JobdetailsComponent } from 'src/app/jobdetails/jobdetails.component';
 import { MatDialog } from '@angular/material/dialog';
+import { JobsService } from 'src/app/jobs.service';
 
 interface Item {
   name: string;
@@ -23,9 +25,10 @@ interface JOB {
   styleUrls: ['./availablejobs.component.scss'],
 })
 export class AvailablejobsComponent implements OnInit {
+  [x: string]: any;
   private itemsCollection!: AngularFirestoreCollection<Item>;
-  items: any[] = [];
-  item: any;
+   items: any[] = [];
+   item: any;
 
   constructor(
     private firestore: AngularFirestore,
@@ -42,24 +45,32 @@ export class AvailablejobsComponent implements OnInit {
     });
   }
 
+  Aplica(){
+
+    // const userId = JSON.parse(localStorage.getItem('userData')).id;
+    //     this.jobsService.addApplication(userId, this.job, docId);
+    //     alert('Ai aplicat la acest job!');
+
+  }
+
   ngOnInit() {
-    this.itemsCollection = this.firestore.collection('JobReq');
+    // this.itemsCollection = this.firestore.collection('JobReq');
 
-    console.log(this.items);
+    // console.log(this.items);
 
-    this.firestore
-      .collection('JobReq')
-      .valueChanges()
-      .subscribe((val) => {
-        this.items = val;
-        this.jobsRankingService.csv = val;
-      });
-    this.itemsCollection
-      .doc('${this.name}')
-      .ref.get()
-      .then((doc) => {
-        this.item = doc.data();
-      });
+    // this.firestore
+    //   .collection('JobReq')
+    //   .valueChanges()
+    //   .subscribe((val) => {
+    //     this.items = val;
+    //     this.jobsRankingService.csv = val;
+    //   });
+    // this.itemsCollection
+    //   .doc('${this.name}')
+    //   .ref.get()
+    //   .then((doc) => {
+    //     this.item = doc.data();
+    //   });
 
 
 
@@ -67,5 +78,7 @@ export class AvailablejobsComponent implements OnInit {
 
 
 }
+
+
 
 

@@ -33,6 +33,7 @@ export class JobrequestComponent implements OnInit {
 
       aboutcompany: ['', Validators.required],
       aboutjob: ['', Validators.required],
+      salary: ['', Validators.required],
       schedule: ['', Validators.required],
       skill: this.fb.array([], [Validators.required]),
       language: this.fb.array([], [Validators.required]),
@@ -41,15 +42,15 @@ export class JobrequestComponent implements OnInit {
       driver: this.fb.array([]),
       terms: ['', Validators.requiredTrue]
 
-      
 
 
-      
-      
+
+
+
 
     })
 
-    
+
 
   }
 
@@ -59,10 +60,10 @@ export class JobrequestComponent implements OnInit {
 
   addskill() {
 
-    const skill = this.fb.group({ 
+    const skill = this.fb.group({
       skill: ['',[Validators.required]],
       level: ['',[Validators.required]],
-      
+
 
     })
 
@@ -79,7 +80,7 @@ export class JobrequestComponent implements OnInit {
 
   addlanguage() {
 
-    const language = this.fb.group({ 
+    const language = this.fb.group({
       language: ['',[Validators.required]],
       level: ['',[Validators.required]]
     })
@@ -98,7 +99,7 @@ export class JobrequestComponent implements OnInit {
 
   addexp() {
 
-    const exp = this.fb.group({ 
+    const exp = this.fb.group({
       exp: ['',[Validators.required]],
       years: ['',[Validators.required]],
       jobdetails: ['',[Validators.required]]
@@ -119,7 +120,7 @@ export class JobrequestComponent implements OnInit {
 
   addcertification() {
 
-    const certification = this.fb.group({ 
+    const certification = this.fb.group({
       certification: ['']
     })
 
@@ -136,7 +137,7 @@ export class JobrequestComponent implements OnInit {
 
   adddriver() {
 
-    const driver = this.fb.group({ 
+    const driver = this.fb.group({
       driver: ['']
     })
 
@@ -149,7 +150,7 @@ export class JobrequestComponent implements OnInit {
 
 
   submitData(value:any){
-   
+
     console.log(this.submitted);
 
     this.submitting = true;
@@ -162,7 +163,7 @@ export class JobrequestComponent implements OnInit {
     });
 
   }
-  
+
 
 
 

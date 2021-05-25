@@ -1,1 +1,34 @@
-<p>jobdetails works!</p>
+<h2>Detalii job</h2>
+
+{{job.aboutjob}} -
+{{job.aboutcompany}} <br>
+{{job.schedule}} <br>
+
+
+<br>
+<label><b>Cerinte</b></label>
+<div *ngFor="let skill of job.skill">
+  {{ skill.skill }} -
+  {{ skill.level }}
+</div>
+
+<br>
+<label><b>Experienta</b></label>
+<div *ngFor="let exp of job.exp">
+  <label>Nume job</label> - {{ exp.exp }} <br>
+  <label>Descriere</label> - {{ exp.jobdetails }} <br>
+  <label>Ani de experienta</label> - {{ exp.years }}
+</div>
+
+<br>
+
+<label><b>Limbi straine cerute</b></label>
+<div *ngFor="let language of job.language">
+  {{ language.language }} -
+  {{ language.level }}
+</div>
+
+<br>
+
+<label><b>Salariu</b></label> <br>
+{{job.salary}}

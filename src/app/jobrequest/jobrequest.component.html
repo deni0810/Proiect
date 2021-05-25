@@ -1,6 +1,6 @@
 
 <head>
-    
+
     <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -25,13 +25,13 @@
         <form [formGroup]="myForm">
 
             <!--Value: {{ myForm.value | json }} -->
-        
-            
+
+
 
 
             <h2>Despre companie</h2>
 
-    
+
             <mat-form-field>
                 <textarea matInput placeholder="Despre companie" formControlName="aboutcompany"></textarea>
             </mat-form-field>
@@ -45,6 +45,15 @@
             <mat-form-field>
                 <textarea matInput style="width: 100%;" placeholder="Despre job" formControlName="aboutjob"></textarea>
             </mat-form-field>
+
+            <h2>Salariu</h2>
+
+            <mat-form-field>
+              <textarea matInput style="width: 100%;" placeholder="Salariu" formControlName="salary"></textarea>
+          </mat-form-field>
+
+
+
 
             <h2>Program job</h2>
 
@@ -60,7 +69,7 @@
             <h2>Cerinte</h2>
 
             <h2>Aptitudini</h2>
-    
+
 
     <div formArrayName="skill">
 
@@ -70,7 +79,7 @@
             <mat-form-field>
                 <input matInput placeholder="Aptitudine" formControlName="skill" autocomplete="off">
             </mat-form-field>
-            
+
             <mat-form-field>
                 <input matInput placeholder="Performanta" formControlName="level" autocomplete="off">
             </mat-form-field>
@@ -118,7 +127,7 @@
                     <mat-option value="italian">Italiana</mat-option>
                     <mat-option value="hungarian">Maghiara</mat-option>
 
-                    
+
 
                 </mat-select>
             </mat-form-field>
@@ -155,7 +164,7 @@
 
         <div *ngFor="let exp of expForms.controls; let i=index" [formGroupName]="i">
 
-            
+
             <mat-form-field>
                 <input matInput placeholder="job" formControlName="exp" autocomplete="off">
             </mat-form-field>
@@ -177,7 +186,7 @@
                 <textarea matInput style="width: 100%;" placeholder="Despre Job" formControlName="jobdetails"></textarea>
             </mat-form-field>
 
-        
+
 
             <button mat-raised-button color="warn" (click)="deleteexp('')">Sterge</button>
 
@@ -193,7 +202,7 @@
     <br>
 
     <h2>Certificari si diplome</h2>
-    
+
 
     <div formArrayName="certification">
 
@@ -220,14 +229,14 @@
 
 
     <h2>Carnet de conducere auto</h2>
-    
+
 
     <div formArrayName="driver">
 
         <div *ngFor="let driver of driverForms.controls; let i=index" [formGroupName]="i">
 
 
-            
+
 
             <mat-form-field>
                 <mat-select formControlName="driver" placeholder="Categorie">
@@ -276,7 +285,7 @@
 
             </form>
 
-    
+
 
     </div>
 </div>

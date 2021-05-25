@@ -19,7 +19,7 @@
     <ul>
       <li *ngFor="let item of items; let i = index">
         <b
-          >{{ item.aboutjob }}
+          >{{ item.aboutjob }} -
           {{ item.aboutcompany }}
           <br />
           {{ item.schedule }}
@@ -36,7 +36,7 @@
     </div> -->
         <label><b>Cerinte</b></label>
         <div *ngFor="let skill of item.skill">
-          {{ skill.skill }}
+          {{ skill.skill }} -
           {{ skill.level }}
         </div>
 
@@ -44,8 +44,14 @@
 
         <div>
 
-          <input type = "button" value = "Details" (click)="openJobDetails(i)" class = "btn btn-primary" >
+          <input type = "button" value = "Detalii" (click)="openJobDetails(i)" class = "btn btn-primary" >
         </div>
+        <br>
+
+        <div>
+          <input type = "button" value = "Aplica" (click)="Aplica()" class = "btn btn-primary" >
+        </div>
+
 
         <hr />
       </li>
