@@ -35,7 +35,11 @@ export class AvailablejobsComponent implements OnInit {
     private jobsRankingService: JobsRankingService,
     public dialog: MatDialog,
     private service: JobsService
-  ) {}
+  ) {
+    this.service.getAllJobs().subscribe((response)=>{
+      this.items = response;
+    });
+  }
 
   openJobDetails(index: number) {
     this.dialog.open(JobdetailsComponent, {
@@ -47,14 +51,15 @@ export class AvailablejobsComponent implements OnInit {
 
   Aplica(item: any) {
     const user = JSON.parse(localStorage.getItem('userData')!);
+    console.log(user.id);
+    console.log(item.id);
+    console.log(user.docId);
     this.service.addApplication(user.id, item.id, user.docId);
     alert('Ai aplicat la acest job!');
   }
 
   async ngOnInit() {
-    this.service.getAllJobs().subscribe((response)=>{
-      this.items = response;
-    });
+   
     // this.itemsCollection = this.firestore.collection('JobReq');
     // console.log(this.items);
     // this.firestore

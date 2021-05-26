@@ -72,22 +72,21 @@ export class JobsService {
     return ref.valueChanges({ idField: 'id' });
   }
 
-  public async addApplication(userId: string, job: IJob, userDocId: string) {
-    const jobId = job.id;
-    const jobRef = this.firestore.collection('JobReq').doc(jobId);
+  public async addApplication(userId: string, jobDocId: string, userDocId: string) {
+    const jobRef = this.firestore.collection('JobReq').doc(jobDocId);
     await jobRef.update({
       jobCandidates: firebase.firestore.FieldValue.arrayUnion(userId),
     });
 
     const userRef = this.firestore.collection('profiles').doc(userDocId);
     await userRef.update({
-      appliedJobs: firebase.firestore.FieldValue.arrayUnion(job),
+      appliedJobs: firebase.firestore.FieldValue.arrayUnion(jobDocId),
     });
     let userData = JSON.parse(localStorage.getItem('userData')!);
     try {
-      userData.appliedJobs.push(job);
+      userData.appliedJobs.push(jobDocId);
     } catch {
-      userData.appliedJobs = [job];
+      userData.appliedJobs = [jobDocId];
     }
     localStorage.setItem('userData', JSON.stringify(userData));
   }
