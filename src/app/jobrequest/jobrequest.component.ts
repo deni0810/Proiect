@@ -41,17 +41,7 @@ export class JobrequestComponent implements OnInit {
       certification: this.fb.array([]),
       driver: this.fb.array([]),
       terms: ['', Validators.requiredTrue]
-
-
-
-
-
-
-
     })
-
-
-
   }
 
   get skillForms() {
@@ -59,12 +49,9 @@ export class JobrequestComponent implements OnInit {
   }
 
   addskill() {
-
     const skill = this.fb.group({
       skill: ['',[Validators.required]],
       level: ['',[Validators.required]],
-
-
     })
 
     this.skillForms.push(skill);
@@ -113,13 +100,11 @@ export class JobrequestComponent implements OnInit {
   }
 
 
-
   get certificationForms() {
     return this.myForm.get('certification') as FormArray
   }
 
   addcertification() {
-
     const certification = this.fb.group({
       certification: ['']
     })
@@ -150,11 +135,11 @@ export class JobrequestComponent implements OnInit {
 
 
   submitData(value:any){
-
     console.log(this.submitted);
-
+    const createdBy = JSON.parse(localStorage.getItem('userData')!).id;
+    const data = {...value, createdBy}
     this.submitting = true;
-    this.submissionForm.add(value).then(res => {
+    this.submissionForm.add(data).then(res => {
       this.submitted = true;
       alert("Succes!");
     }).catch(err => console.log(err)

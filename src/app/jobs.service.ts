@@ -72,6 +72,12 @@ export class JobsService {
     return ref.valueChanges({ idField: 'id' });
   }
 
+  public getAllJobsByCompany() {
+    const id = JSON.parse(localStorage.getItem('userData')!).id;
+    return this.firestore.collection<IJob>('JobReq', (ref) => ref.where('createdBy', '==', id))
+      .valueChanges({ idField: 'id' });
+  }
+
   public async addApplication(userId: string, jobDocId: string, userDocId: string) {
     const jobRef = this.firestore.collection('JobReq').doc(jobDocId);
     await jobRef.update({
