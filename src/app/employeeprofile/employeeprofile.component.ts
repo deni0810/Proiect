@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CvformComponent } from '../cvform/cvform.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,7 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeprofileComponent implements OnInit {
 
-  constructor() { }
+  items: any;
+
+  constructor(public dialog: MatDialog,
+    private router: Router) { }
+
+
+  redirectCV(){
+    this.router.navigate(['cvform']);
+  }
 
   ngOnInit(): void {
   }

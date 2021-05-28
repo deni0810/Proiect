@@ -6,7 +6,6 @@ import { UserService } from 'src/app/user.service';
 import { IUser } from 'src/app/shared/interfaces/user.interface';
 import { IProfile } from 'src/app/shared/interfaces/profile.interface';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -32,12 +31,7 @@ export class LoginComponent {
       this.userService.getProfile(response.localId).subscribe((userArr) => {
         const user = userArr[0];
         localStorage.setItem('userData', JSON.stringify(user));
-        if (user.rol == 'angajat') {
-          this.router.navigate(['employee']);
-        } else if (user.rol == 'angajator') {
-          this.router.navigate(['employer']);
-        }
-
+        this.router.navigate(['profile']);
       });
     });
   }

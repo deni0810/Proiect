@@ -34,6 +34,7 @@ import { EmployerprofileComponent } from './employerprofile/employerprofile.comp
 import { EmployeeprofileComponent } from './employeeprofile/employeeprofile.component';
 import { AvailablejobsComponent } from './availablejobs/availablejobs.component';
 import { JobdetailsComponent } from './jobdetails/jobdetails.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const appRoutes: Routes = [
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
   { path: 'employer', component: EmployerprofileComponent},
   { path: 'availablejobs', component: AvailablejobsComponent},
   { path: 'jobdetails', component: JobdetailsComponent},
+  { path: 'profile', component: ProfileComponent},
 ];
 
 @NgModule({
@@ -67,7 +69,8 @@ const appRoutes: Routes = [
     EmployerprofileComponent,
     EmployeeprofileComponent,
     AvailablejobsComponent,
-    JobdetailsComponent
+    JobdetailsComponent,
+    ProfileComponent
 
   ],
   imports: [
