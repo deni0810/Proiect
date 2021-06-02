@@ -96,4 +96,8 @@ export class JobsService {
     }
     localStorage.setItem('userData', JSON.stringify(userData));
   }
+
+  public getJobByKey(key: string) {
+    return this.firestore.collection<IJob>('JobReq').doc(key).valueChanges();
+  }
 }

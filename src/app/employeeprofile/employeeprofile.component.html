@@ -19,5 +19,7 @@
   <input type = "button" value = "Adauga CV" (click)="redirectCV()" class = "btn btn-primary" >
 </div>
 
-<app-job-item></app-job-item>
+<ng-container *ngIf="jobs.length > 0">
+  <app-job-item *ngFor="let job of jobs" [job]="job"></app-job-item>
+</ng-container>
 
