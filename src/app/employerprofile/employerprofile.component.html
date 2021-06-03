@@ -23,5 +23,5 @@
 <h3>Joburi adaugate</h3>
 
 <ng-container *ngIf="jobs.length > 0">
-  <app-job-item *ngFor="let job of jobs" [job]="job" [showDeleteBtn]="true"></app-job-item>
+  <app-job-item *ngFor="let job of jobs; let i = index" [job]="job" [showDeleteBtn]="true" (deleted)=" deleteItem($event)" [jobIndex]="i"></app-job-item>
 </ng-container>

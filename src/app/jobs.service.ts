@@ -100,6 +100,10 @@ export class JobsService {
   public getJobByKey(key: string) {
     return this.firestore.collection<IJob>('JobReq').doc(key).valueChanges();
   }
+
+  async deleteJob(key: string) {
+    await this.firestore.collection('JobReq').doc(key).delete();
+  }
 }
 
 

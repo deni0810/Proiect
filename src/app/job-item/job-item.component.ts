@@ -4,8 +4,6 @@ import { JobdetailsComponent } from 'src/app/jobdetails/jobdetails.component';
 import { MatDialog } from '@angular/material/dialog';
 import { JobsService } from 'src/app/jobs.service';
 import { Router } from '@angular/router';
-import firebase from 'firebase';
-import { AngularFirestoreCollection } from '@angular/fire/firestore';
 
 interface Item {
   name: string;
@@ -25,10 +23,9 @@ interface JOB {
 export class JobItemComponent {
   [x: string]: any;
   @Input() job!: IJob;
+  @Input() jobIndex!: number;
   @Input() showDeleteBtn = false;
-  private itemsCollection!: AngularFirestoreCollection<Item>;
-  items: any[] = [];
-  item: any;
+  @Output() deleted = new EventEmitter<number>();
 
   constructor(
     public dialog: MatDialog,
@@ -64,9 +61,9 @@ export class JobItemComponent {
     }
   }
 
-  // deleteItem() {
-  //   this.deleted.emit(this.index);
-  // }
+  deleteItem() {
+    this.deleted.emit(this.jobIndex);
+  }
 
   // checkAppliedJobs(appliedJobs: any) {
   //   for( let job of appliedJobs) {

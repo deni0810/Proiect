@@ -24,7 +24,3 @@
 <ng-container *ngIf="jobs.length > 0">
   <app-job-item *ngFor="let job of jobs" [job]="job"></app-job-item>
 </ng-container>
-
-<div class="btn btn-primary" *ngIf="showDeleteBtn">
-  <button (click)="deleteItem()" class="transparent small success no-margin">Delete</button>
-</div>
