@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CvformComponent } from '../cvform/cvform.component';
 import { Router } from '@angular/router';
@@ -15,6 +15,10 @@ export class EmployeeprofileComponent implements OnInit {
 
   items: any;
   jobs: IJob[] = [];
+  @Output() deleted = new EventEmitter<number>();
+  @Input()
+  showDeleteBtn!: boolean;
+  @Input() index = 0;
 
   constructor(public dialog: MatDialog,
     private router: Router, private jobsService: JobsService) {
@@ -38,6 +42,10 @@ export class EmployeeprofileComponent implements OnInit {
         this.jobs.push(job);
       }
     });
+  }
+
+  deleteItem() {
+    this.deleted.emit(this.index);
   }
 
 }

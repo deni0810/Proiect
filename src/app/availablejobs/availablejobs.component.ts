@@ -73,22 +73,4 @@ export class AvailablejobsComponent {
     }
   }
 
-
-  // async ngOnInit() { // nu mai folosesti
-  //   // this.itemsCollection = this.firestore.collection('JobReq');
-  //   // console.log(this.items);
-  //   // this.firestore
-  //   //   .collection('JobReq')
-  //   //   .valueChanges()
-  //   //   .subscribe((val) => {
-  //   //     this.items = val;
-  //   //     this.jobsRankingService.csv = val;
-  //   //   });
-  //   // this.itemsCollection
-  //   //   .doc('${this.name}')
-  //   //   .ref.get()
-  //   //   .then((doc) => {
-  //   //     this.item = doc.data();
-  //   //   });
-  // }
 }

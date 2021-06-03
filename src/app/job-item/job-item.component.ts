@@ -25,13 +25,13 @@ interface JOB {
 export class JobItemComponent {
   [x: string]: any;
   @Input() job!: IJob;
-  private itemsCollection!: AngularFirestoreCollection<Item>;// nu il folosesti
+  private itemsCollection!: AngularFirestoreCollection<Item>;
   items: any[] = [];
   item: any;
 
   constructor(
     public dialog: MatDialog,
-    private jobsService: JobsService,// nu il folosesti
+    private jobsService: JobsService,
     private router: Router
   ) {}
 
@@ -42,12 +42,6 @@ export class JobItemComponent {
       data: this.job,
     });
   }
-
-  // view() {
-
-  //    this.jobsService.appliedJobs  = localStorage.getItem('userData');
-
-  // }
 
   apply() {
     try {
@@ -68,16 +62,6 @@ export class JobItemComponent {
       this.router.navigate(['cont', 'login']);
     }
   }
-
-  //! sterge daca nu folosesti
-  // created(){
-
-  //   this.jobsService.getAllJobsByCompany().subscribe((response) => {
-  //     this.items = response;
-  //     // console.log(response);
-  //   });
-
-  // }
 
   // deleteItem() {
   //   this.deleted.emit(this.index);
