@@ -10,13 +10,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { JobsService } from 'src/app/jobs.service';
 // import { stringify } from '@angular/compiler/src/util';
 // import { IJob } from '../shared/interfaces/job.interface';
-import { IProfile } from '../shared/interfaces/profile.interface';
+import { IProfile } from '../shared/interfaces/profile.interface'; //! atentie la importuri, nu le folosesti!
 
 
 interface Item {
   name: string;
 }
-
+ //! sterge, doar o interfata!
 // interface JOB {
 //   aboutcompany: string;
 //   aboutjob: string;
@@ -30,15 +30,15 @@ interface Item {
 })
 export class AvailablejobsComponent {
   [x: string]: any;
-  private itemsCollection!: AngularFirestoreCollection<Item>;
+  private itemsCollection!: AngularFirestoreCollection<Item>; // nu folosesti
   items: any[] = [];
   item: any;
-  rol!: IProfile;
+  rol!: string;
 
 
   constructor(
-    private firestore: AngularFirestore,
-    private jobsRankingService: JobsRankingService,
+    private firestore: AngularFirestore, //nu folosesti
+    private jobsRankingService: JobsRankingService, //nu folosesti
     public dialog: MatDialog,
     private service: JobsService
   ) {
@@ -74,7 +74,7 @@ export class AvailablejobsComponent {
   }
 
 
-  // async ngOnInit() {
+  // async ngOnInit() { // nu mai folosesti
   //   // this.itemsCollection = this.firestore.collection('JobReq');
   //   // console.log(this.items);
   //   // this.firestore

@@ -25,13 +25,13 @@ interface JOB {
 export class JobItemComponent {
   [x: string]: any;
   @Input() job!: IJob;
-  private itemsCollection!: AngularFirestoreCollection<Item>;
+  private itemsCollection!: AngularFirestoreCollection<Item>;// nu il folosesti
   items: any[] = [];
   item: any;
 
   constructor(
     public dialog: MatDialog,
-    private jobsService: JobsService,
+    private jobsService: JobsService,// nu il folosesti
     private router: Router
   ) {}
 
@@ -69,6 +69,7 @@ export class JobItemComponent {
     }
   }
 
+  //! sterge daca nu folosesti
   // created(){
 
   //   this.jobsService.getAllJobsByCompany().subscribe((response) => {
