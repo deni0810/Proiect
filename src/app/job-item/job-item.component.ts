@@ -69,6 +69,15 @@ export class JobItemComponent {
     }
   }
 
+  // created(){
+
+  //   this.jobsService.getAllJobsByCompany().subscribe((response) => {
+  //     this.items = response;
+  //     // console.log(response);
+  //   });
+
+  // }
+
   // deleteItem() {
   //   this.deleted.emit(this.index);
   // }

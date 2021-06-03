@@ -25,7 +25,7 @@ export class EmployerprofileComponent implements OnInit {
   constructor(private service: JobsService, private router: Router ) {
     this.service.getAllJobsByCompany().subscribe((response)=>{
       this.jobs = response;
-      console.log(this.jobs);
+      // console.log(this.jobs);
     });
    }
 

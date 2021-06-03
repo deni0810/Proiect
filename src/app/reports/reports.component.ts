@@ -27,15 +27,15 @@ export class ReportsComponent implements OnInit {
   item: any;
 
   constructor(private firestore: AngularFirestore, private jobsRankingService: JobsRankingService) {
-   
+
 
   }
 
   ngOnInit() {
     this.itemsCollection = this.firestore.collection('CVS');
 
-    console.log(this.items)
-  
+    // console.log(this.items)
+
     this.firestore.collection('CVS').valueChanges().subscribe((val) => {
       this.items = val
       this.jobsRankingService.csv = val;
@@ -49,4 +49,4 @@ export class ReportsComponent implements OnInit {
 }
 
 
-  
+

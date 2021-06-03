@@ -48,8 +48,8 @@
         </div>
         <br>
 
-        <div>
-          <input type = "button" value = "Aplica" (click)="Aplica(item)" class = "btn btn-primary" >
+        <div *ngIf = "user.rol == 'angajat'">
+          <input type = "button" value = "Aplica"  (click)="Aplica(item)" class = "btn btn-primary" >
         </div>
 
 

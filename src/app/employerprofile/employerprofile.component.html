@@ -22,8 +22,11 @@
 
 <h3>Joburi adaugate</h3>
 
-<li *ngFor="let job of jobs">
+<!-- <li *ngFor="let job of jobs">
   {{ job.id}}
   {{job.company}}
-</li>
+</li> -->
 
+<ng-container *ngIf="jobs.length > 0">
+  <app-job-item *ngFor="let job of jobs" [job]="job"></app-job-item>
+</ng-container>

@@ -101,3 +101,5 @@ export class JobsService {
     return this.firestore.collection<IJob>('JobReq').doc(key).valueChanges();
   }
 }
+
+
