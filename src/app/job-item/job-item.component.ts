@@ -25,6 +25,7 @@ interface JOB {
 export class JobItemComponent {
   [x: string]: any;
   @Input() job!: IJob;
+  @Input() showDeleteBtn = false;
   private itemsCollection!: AngularFirestoreCollection<Item>;
   items: any[] = [];
   item: any;

@@ -33,9 +33,10 @@ export class EmployeeprofileComponent implements OnInit {
     this.router.navigate(['cvform']);
   }
 
+  //!Sterge asta
   ngOnInit(): void {
   }
-
+  //!
   getJob(key: string) {
     this.jobsService.getJobByKey(key).subscribe((job) => {
       if(job) {
