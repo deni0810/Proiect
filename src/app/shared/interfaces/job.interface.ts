@@ -7,4 +7,5 @@ export interface IJob {
   schedule: string;
   language: string;
   exp: string;
+  jobCandidates: string[];
 }

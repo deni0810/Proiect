@@ -1,4 +1,4 @@
-
+<!--
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,7 +10,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-</head>
+</head> -->
 
 <h1 style="color:black">HELLO FUTURE EMPLOYEE!</h1>
 
@@ -22,5 +22,5 @@
 
 <h1>Ai aplicat pentru:</h1>
 <ng-container *ngIf="jobs.length > 0">
-  <app-job-item *ngFor="let job of jobs" [job]="job"></app-job-item>
+  <app-job-item *ngFor="let job of jobs; let i = index" [job]="job" [jobIndex]="i" [showDeleteBtn]="true" (deleted)="deleteItem($event)"></app-job-item>
 </ng-container>

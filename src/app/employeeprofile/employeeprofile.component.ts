@@ -23,8 +23,10 @@ export class EmployeeprofileComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private router: Router, private jobsService: JobsService) {
       const appliedJobs = JSON.parse(localStorage.getItem('userData')!).appliedJobs;
-      for(let job of appliedJobs) {
-        this.getJob(job);
+      if(appliedJobs) {
+        for(let job of appliedJobs) {
+          this.getJob(job);
+        }
       }
     }
 
@@ -45,8 +47,18 @@ export class EmployeeprofileComponent implements OnInit {
     });
   }
 
-  deleteItem() {
-    this.deleted.emit(this.index);
+  deleteItem(item: any) {
+    let user = JSON.parse(localStorage.getItem('userData')!);
+    const job = this.jobs[item]
+    let candidateIndex =  job.jobCandidates.indexOf(user.id);
+    if(candidateIndex >=0) {
+      job.jobCandidates.splice(candidateIndex,1);
+    }
+    let jobIndex = user.appliedJobs.indexOf(job.id);
+    if(jobIndex>=0) {
+      user.appliedJobs.splice(jobIndex,1);
+    }
+    this.jobsService.deleteCandidate(job.id, job.jobCandidates,user.docId, user.appliedJobs);
   }
 
 }

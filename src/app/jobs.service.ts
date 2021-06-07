@@ -98,16 +98,18 @@ export class JobsService {
   }
 
   public getJobByKey(key: string) {
-    return this.firestore.collection<IJob>('JobReq').doc(key).valueChanges();
+    return this.firestore.collection<IJob>('JobReq').doc(key).valueChanges({ idField: 'id' });
   }
 
   async deleteJob(key: string) {
     await this.firestore.collection('JobReq').doc(key).delete();
   }
 
-  async deleteCandidate(key: string){
-    await this.firebase.firestore.collection('JobReq').FieldValue(JobCandidates).doc(key).delete();
-
+  async deleteCandidate(jobDocId: string, jobCandidates: string[], userDocId: string, appliedJobs: string[]){
+    const jobRef = this.firestore.collection('JobReq').doc(jobDocId);
+    await jobRef.update({jobCandidates});
+    const userRef = this.firestore.collection('profiles').doc(userDocId);
+    await userRef.update({appliedJobs});
   }
 
 }
