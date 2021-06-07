@@ -104,6 +104,12 @@ export class JobsService {
   async deleteJob(key: string) {
     await this.firestore.collection('JobReq').doc(key).delete();
   }
+
+  async deleteCandidate(key: string){
+    await this.firebase.firestore.collection('JobReq').FieldValue(JobCandidates).doc(key).delete();
+
+  }
+
 }
 
 
