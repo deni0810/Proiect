@@ -1,10 +1,10 @@
 <div class="container">
   <div class="jumbotron">
-    {{ job.aboutjob }} - {{ job.aboutcompany }} <br />
-    {{ job.schedule }} <br />
-    {{ job.salary }}
+<!-- {{ job.aboutjob }} - {{ job.aboutcompany }} <br />
+{{ job.schedule }} <br />
+{{ job.salary }} -->
 
-    <!-- {{ job.aboutjob }} - {{ job.aboutcompany }} <br />
+    {{ job.aboutjob }} - {{ job.aboutcompany }} <br />
     {{ job.schedule }} <br />
     {{ skill.skill }} -
     {{ skill.level }} <br>
@@ -13,12 +13,12 @@
     {{ exp.years }} <br>
     {{ language.language }} -
     {{ language.level }}<br>
-    {{ job.salary }} -->
+    {{ job.salary }}
 
     <!-- <br>
 <label><b>Cerinte</b></label>
 <div *ngFor="let skill of job.skill"> -->
-    <!-- {{ skill.skill }} -
+     <!-- {{ skill.skill }} -
   {{ skill.level }}
      </div>
 
@@ -43,9 +43,29 @@
     <label><b>Salariu</b></label> <br />
     {{ job.salary }} -->
 
+    <!-- <div>
+      <input
+        type="button"
+        value="Detalii"
+        (click)="openJobDetails(i)"
+        class="btn btn-primary"
+      />
+    </div>
+    <br />
+
+    <div  *ngIf="rol">
+      <input
+        *ngIf="rol == 'angajat'"
+        type="button"
+        value="Aplica"
+        (click)="Aplica(item)"
+        class="btn btn-primary"
+      />
+    </div> -->
+
     <hr />
 
-    <br />
+    <br /> -->
 
     <div class="apply-btn" *ngIf="showDeleteBtn">
       <button (click)="deleteItem()" class="btn btn-danger">Delete</button>

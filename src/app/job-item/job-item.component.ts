@@ -62,4 +62,12 @@ export class JobItemComponent {
     this.update.emit(this.jobIndex);
   }
 
+  // openJobDetails(index: number) {
+  //   this.dialog.open(JobdetailsComponent, {
+  //     width: '800px',
+  //     panelClass: 'modal-no-padding',
+  //     data: this.items[index],
+  //   });
+  // }
+
 }
