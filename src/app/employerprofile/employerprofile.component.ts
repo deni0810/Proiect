@@ -33,6 +33,7 @@ export class EmployerprofileComponent  {
     const job = this.jobs[index];
     this.dialog.open(JobrequestComponent, {
       width: '800px',
+      height: '80vh',
       panelClass: 'modal-no-padding',
       data: job,
     });

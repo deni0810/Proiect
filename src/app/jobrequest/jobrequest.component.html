@@ -32,6 +32,7 @@
           matInput
           placeholder="Nume companie"
           formControlName="aboutcompany"
+          [(ngModel)]="job.aboutcompany"
         ></textarea>
       </mat-form-field>
 
@@ -45,6 +46,7 @@
           style="width: 100%"
           placeholder="Nume job/Titlu"
           formControlName="aboutjob"
+          [(ngModel)]="job.aboutjob"
         ></textarea>
       </mat-form-field>
 
@@ -56,13 +58,14 @@
           style="width: 100%"
           placeholder="Salariu"
           formControlName="salary"
+          [(ngModel)]="job.salary"
         ></textarea>
       </mat-form-field>
 
       <h2>Program job</h2>
 
       <mat-form-field>
-        <mat-select formControlName="schedule" placeholder="Program">
+        <mat-select [(ngModel)]="job.schedule" formControlName="schedule" placeholder="Program">
           <mat-option value="fulltime">Full-Time</mat-option>
           <mat-option value="parttime">Part-Time</mat-option>
         </mat-select>
@@ -315,5 +318,6 @@
         class="btn btn-primary"
       />
     </form>
+    <button (click)="updateJob()" class="btn btn-success" *ngIf="job.createdBy">Save</button>
   </div>
 </div>

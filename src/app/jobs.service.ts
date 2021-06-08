@@ -75,10 +75,11 @@ export class JobsService {
     await userRef.update({appliedJobs});
   }
 
-  // async updateJob(jobDocId: string){
-  //   const jobRef = this.firestore.collection('JobReq').doc(jobDocId);
-
-  // }
+  async updateJob(job: IJob){
+    console.log(job);
+    const jobRef = this.firestore.collection('JobReq').doc(job.id);
+    await jobRef.update(job);
+  }
 
 }
 
