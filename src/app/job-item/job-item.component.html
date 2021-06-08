@@ -1,8 +1,8 @@
 <div class="container">
   <div class="jumbotron">
-<!-- {{ job.aboutjob }} - {{ job.aboutcompany }} <br />
-{{ job.schedule }} <br />
-{{ job.salary }} -->
+    {{ job.aboutjob }} - {{ job.aboutcompany }} <br />
+    {{ job.schedule }} <br />
+    {{ job.salary }}
 
     <!-- {{ job.aboutjob }} - {{ job.aboutcompany }} <br />
     {{ job.schedule }} <br />
@@ -18,7 +18,7 @@
     <!-- <br>
 <label><b>Cerinte</b></label>
 <div *ngFor="let skill of job.skill"> -->
-     <!-- {{ skill.skill }} -
+    <!-- {{ skill.skill }} -
   {{ skill.level }}
      </div>
 
@@ -45,7 +45,7 @@
 
     <hr />
 
-    <br /> -->
+    <br />
 
     <div class="apply-btn" *ngIf="showDeleteBtn">
       <button (click)="deleteItem()" class="btn btn-danger">Delete</button>
