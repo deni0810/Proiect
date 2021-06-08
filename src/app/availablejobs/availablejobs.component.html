@@ -4,7 +4,7 @@
     <hr />
     <br />
 
-      <!-- <div  *ngFor="let item of items; let i = index">
+    <!-- <div  *ngFor="let item of items; let i = index">
         <b
           >{{ item.aboutjob }} -
           {{ item.aboutcompany }}
@@ -45,12 +45,15 @@
           />
         </div> -->
 
-        <hr>
-        <ng-container *ngIf="items">
-        <app-job-item *ngFor="let item of items; let i = index" [jobIndex]="index"></app-job-item>
-        </ng-container>
+    <hr />
+    <ng-container *ngIf="items">
+      <app-job-item
+        *ngFor="let item of items; let i = index"
+        [jobIndex]="index"
+        [job]="item"
+      ></app-job-item>
+    </ng-container>
+  </div>
 </div>
-</div>
-
 
 <!-- <app-job-item></app-job-item> -->

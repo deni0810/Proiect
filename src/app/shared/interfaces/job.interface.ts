@@ -10,9 +10,6 @@ export interface IJob {
   language: string;
   exp: string;
   jobCandidates: string[];
-<<<<<<< HEAD
   skill: ISkill;
-=======
   createdBy: string;
->>>>>>> 2c21bb6ec964000ab1c168a4b9ded9cf51daa033
 }
