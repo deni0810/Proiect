@@ -1,3 +1,5 @@
+import { ISkill } from "./skill.interface";
+
 export interface IJob {
   id: string;
   company: string;
@@ -8,4 +10,5 @@ export interface IJob {
   language: string;
   exp: string;
   jobCandidates: string[];
+  skill: ISkill;
 }

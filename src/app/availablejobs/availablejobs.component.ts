@@ -35,6 +35,7 @@ export class AvailablejobsComponent {
   ) {
     this.service.getAllJobs().subscribe((response) => {
       this.items = response;
+      console.log(response);
     });
 
     const user = JSON.parse(localStorage.getItem('userData')!);
