@@ -12,7 +12,7 @@ export class JobdetailsComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
-    this.job = data; // aici iti sunt datele jobului pe care trebuie sa le afisezi in modala
+    this.job = data;
     console.log(this.job);
   }
   ngOnInit(): void {

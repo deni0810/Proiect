@@ -1,27 +1,18 @@
-import { Component, Input} from '@angular/core';
+import { Component} from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/firestore';
 import { JobsRankingService } from '../jobs-ranking.service';
-// import { UserService } from '../user.service';
 import { JobdetailsComponent } from 'src/app/jobdetails/jobdetails.component';
 import { MatDialog } from '@angular/material/dialog';
 import { JobsService } from 'src/app/jobs.service';
-// import { stringify } from '@angular/compiler/src/util';
-// import { IJob } from '../shared/interfaces/job.interface';
-import { IProfile } from '../shared/interfaces/profile.interface'; //! atentie la importuri, nu le folosesti!
 
 
 interface Item {
   name: string;
 }
- //! sterge, doar o interfata!
-// interface JOB {
-//   aboutcompany: string;
-//   aboutjob: string;
-//   schedule: string;
-// }
+
 
 @Component({
   selector: 'app-availablejobs',

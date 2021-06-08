@@ -1,12 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Component, OnInit, Inject } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  FormArray,
+  FormControl,
+  Validators,
+} from '@angular/forms';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/firestore';
 import { JobsRankingService } from '../jobs-ranking.service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { IJob } from '../shared/interfaces/job.interface';
 
 @Component({
   selector: 'app-jobrequest',
   templateUrl: './jobrequest.component.html',
-  styleUrls: ['./jobrequest.component.scss']
+  styleUrls: ['./jobrequest.component.scss'],
 })
 export class JobrequestComponent implements OnInit {
   submissionForm!: AngularFirestoreCollection<any>;
@@ -15,22 +26,33 @@ export class JobrequestComponent implements OnInit {
 
   submitting = false;
   submitted = false;
+  job: IJob;
 
-  constructor(private fb: FormBuilder, private firestore: AngularFirestore, private jobsRankingService: JobsRankingService) { Validators.required}
+  constructor(
+    private fb: FormBuilder,
+    private firestore: AngularFirestore,
+    private jobsRankingService: JobsRankingService,
+    @Inject(MAT_DIALOG_DATA) data: any
+  ) {
+    Validators.required;
+    this.job = data;
+  }
 
   sortCandidatesByRanking() {
     return this.jobsRankingService.recommendedCandidates.sort();
   }
 
   ngOnInit() {
-   this.firestore.collection('JobReq').valueChanges().subscribe((response)=>{
-      this.jobsRankingService.jobReq = response;
-    });
+    this.firestore
+      .collection('JobReq')
+      .valueChanges()
+      .subscribe((response) => {
+        this.jobsRankingService.jobReq = response;
+      });
 
     this.submissionForm = this.firestore.collection('JobReq');
 
     this.myForm = this.fb.group({
-
       aboutcompany: ['', Validators.required],
       aboutjob: ['', Validators.required],
       salary: ['', Validators.required],
@@ -40,116 +62,108 @@ export class JobrequestComponent implements OnInit {
       exp: this.fb.array([], [Validators.required]),
       certification: this.fb.array([]),
       driver: this.fb.array([]),
-      terms: ['', Validators.requiredTrue]
-    })
+      terms: ['', Validators.requiredTrue],
+    });
   }
 
   get skillForms() {
-    return this.myForm.get('skill') as FormArray
+    return this.myForm.get('skill') as FormArray;
   }
 
   addskill() {
     const skill = this.fb.group({
-      skill: ['',[Validators.required]],
-      level: ['',[Validators.required]],
-    })
+      skill: ['', [Validators.required]],
+      level: ['', [Validators.required]],
+    });
 
     this.skillForms.push(skill);
   }
 
-  deleteskill(i:any) {
-    this.skillForms.removeAt(i)
+  deleteskill(i: any) {
+    this.skillForms.removeAt(i);
   }
 
   get languageForms() {
-    return this.myForm.get('language') as FormArray
+    return this.myForm.get('language') as FormArray;
   }
 
   addlanguage() {
-
     const language = this.fb.group({
-      language: ['',[Validators.required]],
-      level: ['',[Validators.required]]
-    })
+      language: ['', [Validators.required]],
+      level: ['', [Validators.required]],
+    });
 
     this.languageForms.push(language);
   }
 
-  deletelanguage(i:any) {
-    this.languageForms.removeAt(i)
+  deletelanguage(i: any) {
+    this.languageForms.removeAt(i);
   }
 
-
   get expForms() {
-    return this.myForm.get('exp') as FormArray
+    return this.myForm.get('exp') as FormArray;
   }
 
   addexp() {
-
     const exp = this.fb.group({
-      exp: ['',[Validators.required]],
-      years: ['',[Validators.required]],
-      jobdetails: ['',[Validators.required]]
-    })
+      exp: ['', [Validators.required]],
+      years: ['', [Validators.required]],
+      jobdetails: ['', [Validators.required]],
+    });
 
     this.expForms.push(exp);
   }
 
-  deleteexp(i:any) {
-    this.expForms.removeAt(i)
+  deleteexp(i: any) {
+    this.expForms.removeAt(i);
   }
 
-
   get certificationForms() {
-    return this.myForm.get('certification') as FormArray
+    return this.myForm.get('certification') as FormArray;
   }
 
   addcertification() {
     const certification = this.fb.group({
-      certification: ['']
-    })
+      certification: [''],
+    });
 
     this.certificationForms.push(certification);
   }
 
-  deletecertification(i:any) {
-    this.certificationForms.removeAt(i)
+  deletecertification(i: any) {
+    this.certificationForms.removeAt(i);
   }
 
   get driverForms() {
-    return this.myForm.get('driver') as FormArray
+    return this.myForm.get('driver') as FormArray;
   }
 
   adddriver() {
-
     const driver = this.fb.group({
-      driver: ['']
-    })
+      driver: [''],
+    });
 
     this.driverForms.push(driver);
   }
 
-  deletedriver(i:any) {
-    this.driverForms.removeAt(i)
+  deletedriver(i: any) {
+    this.driverForms.removeAt(i);
   }
 
-
-  submitData(value:any){
+  submitData(value: any) {
     console.log(this.submitted);
     const createdBy = JSON.parse(localStorage.getItem('userData')!).id;
-    const data = {...value, createdBy}
+    const data = { ...value, createdBy };
     this.submitting = true;
-    this.submissionForm.add(data).then(res => {
-      this.submitted = true;
-      alert("Succes!");
-    }).catch(err => console.log(err)
-    ).finally(() => {
-      this.submitting = false;
-    });
-
+    this.submissionForm
+      .add(data)
+      .then((res) => {
+        this.submitted = true;
+        alert('Succes!');
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        this.submitting = false;
+      });
   }
-
-
-
-
 }

@@ -1,23 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { IRecommendedCandidate } from './shared/interfaces/recommended-candidate.interface';
 
-interface RecommendedCandidate {
-  id?: string;
-  name: string;
-  skills: Skill[];
-}
 
-interface Skill {
-  level: number;
-  skill: string;
-}
-
-interface Item { name: string; }
 
 @Injectable({ providedIn: 'root' })
 export class JobsRankingService {
-  recommendedCandidates: RecommendedCandidate[] = [];
+  recommendedCandidates: IRecommendedCandidate[] = [];
 
   jobReq: any = [];
   csv: any = [];

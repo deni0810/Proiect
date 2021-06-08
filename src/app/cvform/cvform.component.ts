@@ -11,7 +11,6 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/firestore';
 import { JobsRankingService } from '../jobs-ranking.service';
-//import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 @Component({
   selector: 'cvform',
@@ -22,7 +21,7 @@ export class CvformComponent implements OnInit {
   private submissionForm!: AngularFirestoreCollection<any>;
 
   myForm!: FormGroup;
-  //firestore: any;
+
 
   submitting = false;
   submitted = false;

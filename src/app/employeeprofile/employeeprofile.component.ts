@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CvformComponent } from '../cvform/cvform.component';
 import { Router } from '@angular/router';
 import { JobsService } from '../jobs.service';
 import { IJob } from '../shared/interfaces/job.interface';
@@ -11,7 +10,7 @@ import { IJob } from '../shared/interfaces/job.interface';
   templateUrl: './employeeprofile.component.html',
   styleUrls: ['./employeeprofile.component.scss']
 })
-export class EmployeeprofileComponent implements OnInit {
+export class EmployeeprofileComponent {
 
   items: any;
   jobs: IJob[] = [];
@@ -35,10 +34,7 @@ export class EmployeeprofileComponent implements OnInit {
     this.router.navigate(['cvform']);
   }
 
-  //!Sterge asta
-  ngOnInit(): void {
-  }
-  //!
+
   getJob(key: string) {
     this.jobsService.getJobByKey(key).subscribe((job) => {
       if(job) {

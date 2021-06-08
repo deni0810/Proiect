@@ -5,15 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { JobsService } from 'src/app/jobs.service';
 import { Router } from '@angular/router';
 
-interface Item {
-  name: string;
-}
 
-interface JOB {
-  aboutcompany: string;
-  aboutjob: string;
-  schedule: string;
-}
 
 @Component({
   selector: 'app-job-item',
@@ -26,10 +18,11 @@ export class JobItemComponent {
   @Input() jobIndex!: number;
   @Input() showDeleteBtn = false;
   @Output() deleted = new EventEmitter<number>();
+  @Input() showUpdateBtn = false;
+  @Output() update = new EventEmitter<number>();
 
   constructor(
     public dialog: MatDialog,
-    private jobsService: JobsService,
     private router: Router
   ) {}
 
@@ -65,12 +58,8 @@ export class JobItemComponent {
     this.deleted.emit(this.jobIndex);
   }
 
-  // checkAppliedJobs(appliedJobs: any) {
-  //   for( let job of appliedJobs) {
-  //     if(job.id === this.job.id) {
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // }
+  updateItem() {
+    this.update.emit(this.jobIndex);
+  }
+
 }

@@ -7,5 +7,9 @@
 <br />
 
 <div class="apply-btn" *ngIf="showDeleteBtn">
-  <button (click)="deleteItem()" class="transparent small success no-margin">Delete</button>
+  <button (click)="deleteItem()" class="btn btn-danger">Delete</button>
+</div>
+ <br>
+ <div class="apply-btn" *ngIf="showUpdateBtn">
+  <button (click)="updateItem()" class="btn btn-success">Update</button>
 </div>

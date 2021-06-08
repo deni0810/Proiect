@@ -1,291 +1,319 @@
-
 <head>
-
-    <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
   <style>
-      .mat-form-field{ width: 80%; }
+    .mat-form-field {
+      width: 80%;
+    }
   </style>
-
 </head>
 
-<div class = "container">
-    <div class = "jumbotron">
+<div class="container">
+  <div class="jumbotron">
+    <h1>Descriere job</h1>
 
-        <h1>Descriere job</h1>
+    <hr />
 
-        <hr>
+    <form [formGroup]="myForm">
+      <!--Value: {{ myForm.value | json }} -->
 
-        <form [formGroup]="myForm">
+      <h2>Despre companie</h2>
 
-            <!--Value: {{ myForm.value | json }} -->
+      <mat-form-field>
+        <textarea
+          matInput
+          placeholder="Nume companie"
+          formControlName="aboutcompany"
+        ></textarea>
+      </mat-form-field>
 
+      <hr />
 
+      <h2>Despre job</h2>
 
+      <mat-form-field>
+        <textarea
+          matInput
+          style="width: 100%"
+          placeholder="Nume job/Titlu"
+          formControlName="aboutjob"
+        ></textarea>
+      </mat-form-field>
 
-            <h2>Despre companie</h2>
+      <h2>Salariu</h2>
 
+      <mat-form-field>
+        <textarea
+          matInput
+          style="width: 100%"
+          placeholder="Salariu"
+          formControlName="salary"
+        ></textarea>
+      </mat-form-field>
 
-            <mat-form-field>
-                <textarea matInput placeholder="Nume companie" formControlName="aboutcompany"></textarea>
-            </mat-form-field>
+      <h2>Program job</h2>
 
+      <mat-form-field>
+        <mat-select formControlName="schedule" placeholder="Program">
+          <mat-option value="fulltime">Full-Time</mat-option>
+          <mat-option value="parttime">Part-Time</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-            <hr>
+      <hr />
 
+      <h2>Cerinte</h2>
 
-            <h2>Despre job</h2>
+      <h2>Aptitudini</h2>
 
-            <mat-form-field>
-                <textarea matInput style="width: 100%;" placeholder="Nume job/Titlu" formControlName="aboutjob"></textarea>
-            </mat-form-field>
-
-            <h2>Salariu</h2>
-
-            <mat-form-field>
-              <textarea matInput style="width: 100%;" placeholder="Salariu" formControlName="salary"></textarea>
+      <div formArrayName="skill">
+        <div
+          *ngFor="let skill of skillForms.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Aptitudine"
+              formControlName="skill"
+              autocomplete="off"
+            />
           </mat-form-field>
 
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Performanta"
+              formControlName="level"
+              autocomplete="off"
+            />
+          </mat-form-field>
 
-
-
-            <h2>Program job</h2>
-
-            <mat-form-field>
-                <mat-select formControlName="schedule" placeholder="Program">
-                    <mat-option value="fulltime">Full-Time</mat-option>
-                    <mat-option value="parttime">Part-Time</mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <hr>
-
-            <h2>Cerinte</h2>
-
-            <h2>Aptitudini</h2>
-
-
-    <div formArrayName="skill">
-
-        <div *ngFor="let skill of skillForms.controls; let i=index" [formGroupName]="i">
-
-
-            <mat-form-field>
-                <input matInput placeholder="Aptitudine" formControlName="skill" autocomplete="off">
-            </mat-form-field>
-
-            <mat-form-field>
-                <input matInput placeholder="Performanta" formControlName="level" autocomplete="off">
-            </mat-form-field>
-
-
-            <button mat-raised-button color="warn" (click)="deleteskill('')">Sterge</button>
-
+          <button mat-raised-button color="warn" (click)="deleteskill('')">
+            Sterge
+          </button>
         </div>
+      </div>
 
-    </div>
+      <button mat-raised-button color="primary" (click)="addskill()">
+        Adauga
+      </button>
 
-    <button mat-raised-button color="primary" (click)="addskill()">Adauga</button>
+      <br />
 
+      <br />
 
-    <br>
+      <br />
 
-    <br>
+      <h2>Limbi straine</h2>
 
-    <br>
+      <div formArrayName="language">
+        <div
+          *ngFor="let language of languageForms.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <mat-form-field>
+            <label>Limba straina</label>
+            <mat-select formControlName="language">
+              <mat-option value="french">Franceza</mat-option>
+              <mat-option value="german">Germana</mat-option>
+              <mat-option value="english">Engleza</mat-option>
+              <mat-option value="chinese">Chineza</mat-option>
+              <mat-option value="japanese">Japoneza</mat-option>
+              <mat-option value="corean">Coreana</mat-option>
+              <mat-option value="spanish">Spaniola</mat-option>
+              <mat-option value="romanian">Romana</mat-option>
+              <mat-option value="russian">Rusa</mat-option>
+              <mat-option value="arabic">Araba</mat-option>
+              <mat-option value="turkish">Turca</mat-option>
+              <mat-option value="italian">Italiana</mat-option>
+              <mat-option value="hungarian">Maghiara</mat-option>
+            </mat-select>
+          </mat-form-field>
 
+          <mat-form-field>
+            <label>Nivel</label>
+            <mat-select formControlName="level">
+              <mat-option value="working-knowledge"
+                >Cunostinte practice</mat-option
+              >
+              <mat-option value="good-working-knowledge"
+                >Cunostinte practice bune</mat-option
+              >
+              <mat-option value="very-good-command"
+                >Stapanire foarte buna a limbii</mat-option
+              >
+              <mat-option value="highly-proficient-s-w"
+                >Stapanire foarte buna a limbii,scris si oral</mat-option
+              >
+              <mat-option value="native">Nativ</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-
-    <h2>Limbi straine</h2>
-
-
-    <div formArrayName="language">
-
-        <div *ngFor="let language of languageForms.controls; let i=index" [formGroupName]="i">
-
-
-            <mat-form-field>
-                <label>Limba straina</label>
-                <mat-select formControlName="language" >
-                    <mat-option value="french">Franceza</mat-option>
-                    <mat-option value="german">Germana</mat-option>
-                    <mat-option value="english">Engleza</mat-option>
-                    <mat-option value="chinese">Chineza</mat-option>
-                    <mat-option value="japanese">Japoneza</mat-option>
-                    <mat-option value="corean">Coreana</mat-option>
-                    <mat-option value="spanish">Spaniola</mat-option>
-                    <mat-option value="romanian">Romana</mat-option>
-                    <mat-option value="russian">Rusa</mat-option>
-                    <mat-option value="arabic">Araba</mat-option>
-                    <mat-option value="turkish">Turca</mat-option>
-                    <mat-option value="italian">Italiana</mat-option>
-                    <mat-option value="hungarian">Maghiara</mat-option>
-
-
-
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-                <label>Nivel</label>
-                <mat-select formControlName="level" >
-                    <mat-option value="working-knowledge">Cunostinte practice</mat-option>
-                    <mat-option value="good-working-knowledge">Cunostinte practice bune</mat-option>
-                    <mat-option value="very-good-command">Stapanire foarte buna a limbii</mat-option>
-                    <mat-option value="highly-proficient-s-w">Stapanire foarte buna a limbii,scris si oral</mat-option>
-                    <mat-option value="native">Nativ</mat-option>
-                </mat-select>
-            </mat-form-field>
-
-
-            <button mat-raised-button color="warn" (click)="deletelanguage('')">Sterge</button>
-
+          <button mat-raised-button color="warn" (click)="deletelanguage('')">
+            Sterge
+          </button>
         </div>
+      </div>
 
-    </div>
+      <button mat-raised-button color="primary" (click)="addlanguage()">
+        Adauga
+      </button>
 
-    <button mat-raised-button color="primary" (click)="addlanguage()">Adauga</button>
+      <br />
+      <br />
+      <br />
 
+      <h2>Experienta</h2>
+      <label>Adauga domeniul, anii de experienta si detalii despre job</label>
 
-    <br>
-    <br>
-    <br>
+      <div formArrayName="exp">
+        <div
+          *ngFor="let exp of expForms.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="job"
+              formControlName="exp"
+              autocomplete="off"
+            />
+          </mat-form-field>
 
-    <h2>Experienta</h2>
-    <label>Adauga domeniul, anii de experienta si detalii despre job</label>
+          <mat-form-field>
+            <mat-select formControlName="years" placeholder="ani de experienta">
+              <mat-option value="1year">1 an</mat-option>
+              <mat-option value="2years">2 ani</mat-option>
+              <mat-option value="3years">3 ani</mat-option>
+              <mat-option value="4years">4 ani</mat-option>
+              <mat-option value="5years+">5 ani +</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-    <div formArrayName="exp">
+          <br />
 
-        <div *ngFor="let exp of expForms.controls; let i=index" [formGroupName]="i">
+          <mat-form-field>
+            <textarea
+              matInput
+              style="width: 100%"
+              placeholder="Despre Job"
+              formControlName="jobdetails"
+            ></textarea>
+          </mat-form-field>
 
-
-            <mat-form-field>
-                <input matInput placeholder="job" formControlName="exp" autocomplete="off">
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-select formControlName="years" placeholder="ani de experienta">
-                    <mat-option value="1year">1 an</mat-option>
-                    <mat-option value="2years">2 ani</mat-option>
-                    <mat-option value="3years">3 ani</mat-option>
-                    <mat-option value="4years">4 ani</mat-option>
-                    <mat-option value="5years+">5 ani +</mat-option>
-
-                </mat-select>
-            </mat-form-field>
-
-            <br>
-
-            <mat-form-field>
-                <textarea matInput style="width: 100%;" placeholder="Despre Job" formControlName="jobdetails"></textarea>
-            </mat-form-field>
-
-
-
-            <button mat-raised-button color="warn" (click)="deleteexp('')">Sterge</button>
-
+          <button mat-raised-button color="warn" (click)="deleteexp('')">
+            Sterge
+          </button>
         </div>
+      </div>
 
-    </div>
+      <button mat-raised-button color="primary" (click)="addexp()">
+        Adauga
+      </button>
 
-    <button mat-raised-button color="primary" (click)="addexp()">Adauga</button>
+      <br />
+      <br />
+      <br />
 
+      <h2>Certificari si diplome</h2>
 
-    <br>
-    <br>
-    <br>
+      <div formArrayName="certification">
+        <div
+          *ngFor="
+            let certification of certificationForms.controls;
+            let i = index
+          "
+          [formGroupName]="i"
+        >
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="certificare/diploma"
+              formControlName="certification"
+              autocomplete="off"
+            />
+          </mat-form-field>
 
-    <h2>Certificari si diplome</h2>
-
-
-    <div formArrayName="certification">
-
-        <div *ngFor="let certification of certificationForms.controls; let i=index" [formGroupName]="i">
-
-
-            <mat-form-field>
-                <input matInput placeholder="certificare/diploma" formControlName="certification" autocomplete="off">
-            </mat-form-field>
-
-
-            <button mat-raised-button color="warn" (click)="deletecertification('')">Sterge</button>
-
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="deletecertification('')"
+          >
+            Sterge
+          </button>
         </div>
+      </div>
 
-    </div>
+      <button mat-raised-button color="primary" (click)="addcertification()">
+        Adauga
+      </button>
 
-    <button mat-raised-button color="primary" (click)="addcertification()">Adauga</button>
+      <br />
+      <br />
+      <br />
 
+      <h2>Carnet de conducere auto</h2>
 
-    <br>
-    <br>
-    <br>
+      <div formArrayName="driver">
+        <div
+          *ngFor="let driver of driverForms.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <mat-form-field>
+            <mat-select formControlName="driver" placeholder="Categorie">
+              <mat-option value="am">AM</mat-option>
+              <mat-option value="a1">A1</mat-option>
+              <mat-option value="a2">A2</mat-option>
+              <mat-option value="a">A</mat-option>
+              <mat-option value="b">B</mat-option>
+              <mat-option value="be">BE</mat-option>
+              <mat-option value="b1">B1</mat-option>
+              <mat-option value="c1">C1</mat-option>
+              <mat-option value="c1e">C1E</mat-option>
+              <mat-option value="c">C</mat-option>
+              <mat-option value="ce">CE</mat-option>
+              <mat-option value="d1">D1</mat-option>
+              <mat-option value="d1e">D1E</mat-option>
+              <mat-option value="d">D</mat-option>
+              <mat-option value="de">DE</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-
-    <h2>Carnet de conducere auto</h2>
-
-
-    <div formArrayName="driver">
-
-        <div *ngFor="let driver of driverForms.controls; let i=index" [formGroupName]="i">
-
-
-
-
-            <mat-form-field>
-                <mat-select formControlName="driver" placeholder="Categorie">
-                    <mat-option value="am">AM</mat-option>
-                    <mat-option value="a1">A1</mat-option>
-                    <mat-option value="a2">A2</mat-option>
-                    <mat-option value="a">A</mat-option>
-                    <mat-option value="b">B</mat-option>
-                    <mat-option value="be">BE</mat-option>
-                    <mat-option value="b1">B1</mat-option>
-                    <mat-option value="c1">C1</mat-option>
-                    <mat-option value="c1e">C1E</mat-option>
-                    <mat-option value="c">C</mat-option>
-                    <mat-option value="ce">CE</mat-option>
-                    <mat-option value="d1">D1</mat-option>
-                    <mat-option value="d1e">D1E</mat-option>
-                    <mat-option value="d">D</mat-option>
-                    <mat-option value="de">DE</mat-option>
-
-                </mat-select>
-            </mat-form-field>
-
-
-            <button mat-raised-button color="warn" (click)="deletedriver('')">Sterge</button>
-
+          <button mat-raised-button color="warn" (click)="deletedriver('')">
+            Sterge
+          </button>
         </div>
+      </div>
 
-    </div>
+      <button mat-raised-button color="primary" (click)="adddriver()">
+        Adauga
+      </button>
 
-    <button mat-raised-button color="primary" (click)="adddriver()">Adauga</button>
+      <hr />
 
-    <hr>
+      <mat-checkbox class="Check" formControlName="terms"
+        >Accept termenii si conditiile</mat-checkbox
+      >
 
+      <br />
+      <br />
 
-    <mat-checkbox class="Check" formControlName = "terms">Accept termenii si conditiile</mat-checkbox>
-
-    <br>
-    <br>
-
-
-
-    <input type="submit" value="Submit" [disabled]="myForm.invalid" (click)="submitData(myForm.value)"
-                class="btn btn-primary">
-
-
-
-            </form>
-
-
-
-    </div>
+      <input
+        type="submit"
+        value="Submit"
+        [disabled]="myForm.invalid"
+        (click)="submitData(myForm.value)"
+        class="btn btn-primary"
+      />
+    </form>
+  </div>
 </div>
