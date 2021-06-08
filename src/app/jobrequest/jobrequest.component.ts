@@ -13,6 +13,7 @@ import {
 import { JobsRankingService } from '../jobs-ranking.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IJob } from '../shared/interfaces/job.interface';
+import { JobsService } from '../jobs.service';
 
 @Component({
   selector: 'app-jobrequest',
@@ -32,7 +33,8 @@ export class JobrequestComponent implements OnInit {
     private fb: FormBuilder,
     private firestore: AngularFirestore,
     private jobsRankingService: JobsRankingService,
-    @Inject(MAT_DIALOG_DATA) data: any
+    @Inject(MAT_DIALOG_DATA) data: any,
+    private jobsService: JobsService
   ) {
     Validators.required;
     this.job = data;
@@ -151,7 +153,6 @@ export class JobrequestComponent implements OnInit {
   }
 
   submitData(value: any) {
-    console.log(this.submitted);
     const createdBy = JSON.parse(localStorage.getItem('userData')!).id;
     const data = { ...value, createdBy };
     this.submitting = true;
@@ -165,5 +166,9 @@ export class JobrequestComponent implements OnInit {
       .finally(() => {
         this.submitting = false;
       });
+  }
+
+  updateJob() {
+    this.jobsService.updateJob(this.job)
   }
 }

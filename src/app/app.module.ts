@@ -36,7 +36,7 @@ import { AvailablejobsComponent } from './availablejobs/availablejobs.component'
 import { JobdetailsComponent } from './jobdetails/jobdetails.component';
 import { ProfileComponent } from './profile/profile.component';
 import { JobItemComponent } from './job-item/job-item.component';
-
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -50,10 +50,14 @@ const appRoutes: Routes = [
   { path: 'ranking', component: RankingComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'employee', component: EmployeeprofileComponent},
-  { path: 'employer', component: EmployerprofileComponent},
-  { path: 'availablejobs', component: AvailablejobsComponent, canActivate: [AuthGuard]},
-  { path: 'jobdetails', component: JobdetailsComponent},
+  { path: 'employee', component: EmployeeprofileComponent },
+  { path: 'employer', component: EmployerprofileComponent },
+  {
+    path: 'availablejobs',
+    component: AvailablejobsComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'jobdetails', component: JobdetailsComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 ];
 
@@ -72,8 +76,7 @@ const appRoutes: Routes = [
     AvailablejobsComponent,
     JobdetailsComponent,
     ProfileComponent,
-    JobItemComponent
-
+    JobItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +97,11 @@ const appRoutes: Routes = [
     CommonModule,
     HttpClientModule,
   ],
-  providers: [AngularFirestore],
+  providers: [
+    AngularFirestore,
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

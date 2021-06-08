@@ -8,4 +8,5 @@ export interface IJob {
   language: string;
   exp: string;
   jobCandidates: string[];
+  createdBy: string;
 }
