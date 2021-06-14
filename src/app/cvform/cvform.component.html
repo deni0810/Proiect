@@ -1,5 +1,5 @@
 <head>
-    
+
     <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -30,11 +30,11 @@
     <hr>
 
 
-    
-        
+
+
 <h2>Date personale</h2>
 
-    
+
     <mat-form-field>
         <label>Prenume</label>
         <input matInput   formControlName="fname"  autocomplete="off">
@@ -78,7 +78,7 @@
 
 
     <h2>Hobby</h2>
-    
+
 
     <div formArrayName="hobbie">
 
@@ -99,16 +99,16 @@
     <button mat-raised-button color="primary" (click)="addhobbie()">Adauga</button>
 
 
-    
 
 
 
-    
+
+
 
     <hr>
 
     <h2>Aptitudini</h2>
-    
+
 
     <div formArrayName="skill">
 
@@ -119,7 +119,7 @@
                 <label>Aptitudine</label>
                 <input matInput   formControlName="skill" autocomplete="off">
             </mat-form-field>
-            
+
             <mat-form-field>
                 <label>Nivel de performanta</label>
                 <input matInput   formControlName="level" autocomplete="off">
@@ -163,7 +163,7 @@
                     <mat-option value="italian">Italiana</mat-option>
                     <mat-option value="hungarian">Maghiara</mat-option>
 
-                    
+
 
                 </mat-select>
             </mat-form-field>
@@ -171,11 +171,11 @@
             <mat-form-field>
                 <label>Nivel</label>
                 <mat-select formControlName="level" >
-                    <mat-option value="working-knowledge">Cunostinte practice</mat-option>
-                    <mat-option value="good-working-knowledge">Cunostinte practice bune</mat-option>
-                    <mat-option value="very-good-command">Stapanire foarte buna a limbii</mat-option>
-                    <mat-option value="highly-proficient-s-w">Stapanire foarte buna a limbii,scris si oral</mat-option>
-                    <mat-option value="native">Nativ</mat-option>
+                    <mat-option value="1">Cunostinte practice</mat-option>
+                    <mat-option value="2">Cunostinte practice bune</mat-option>
+                    <mat-option value="3">Stapanire foarte buna a limbii</mat-option>
+                    <mat-option value="4">Stapanire foarte buna a limbii,scris si oral</mat-option>
+                    <mat-option value="5">Nativ</mat-option>
                 </mat-select>
             </mat-form-field>
 
@@ -198,7 +198,7 @@
 
         <div *ngFor="let job of jobForms.controls; let i=index" [formGroupName]="i">
 
-            
+
             <mat-form-field>
                 <label>Titlu/Pozitie</label>
                 <input matInput   formControlName="title" autocomplete="off">
@@ -230,7 +230,7 @@
 
 
 
-        
+
 
             <button mat-raised-button color="warn" (click)="deletejob('')">Sterge</button>
 
@@ -243,7 +243,7 @@
     <hr>
 
     <h2>Educatie</h2>
-    
+
 
     <div formArrayName="education">
 
@@ -289,14 +289,14 @@
 
 
 
-            
 
 
 
 
 
 
-            
+
+
 
             <button mat-raised-button color="warn" (click)="deleteeducation('')">Sterge</button>
 
@@ -311,7 +311,7 @@
 
 
     <h2>Certificari si diplome</h2>
-    
+
 
     <div formArrayName="certification">
 
@@ -333,19 +333,19 @@
     <button mat-raised-button color="primary" (click)="addcertification()">Adauga</button>
 
 
-    
+
 
     <hr>
 
     <h2>Carnet de conducere auto</h2>
-    
+
 
     <div formArrayName="driver">
 
         <div *ngFor="let driver of driverForms.controls; let i=index" [formGroupName]="i">
 
 
-            
+
 
             <mat-form-field>
                 <label>Categoria</label>
@@ -385,7 +385,7 @@
 
 
     <br>
-    
+
 
     <mat-checkbox class="Check" formControlName = "terms">Accept termenii si conditiile</mat-checkbox>
 
@@ -403,10 +403,10 @@
 
     <br>
 
-    
 
 
-    
+
+
 
 </form>
 

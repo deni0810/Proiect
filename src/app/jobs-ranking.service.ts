@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { IJob } from './shared/interfaces/job.interface';
+import { IProfile } from './shared/interfaces/profile.interface';
 import { IRecommendedCandidate } from './shared/interfaces/recommended-candidate.interface';
 
 
@@ -21,31 +23,25 @@ export class JobsRankingService {
 
   // YOU WILL NEED TO ITERATE THORUGHT CANDIDATES AND TAKE ONLY THE ID, NAME, SKILLS
 
+  // sortam atunci cand:
+  // - avem mai multi useri ce au aplicat la un job
+  // -
 
   compare() {
-    this.firestore.collection('CVS').valueChanges().subscribe((val) => {
-      this.csv = val;
-      let cvArray: any[] = [];
+
+    this.firestore.collection('CVS').valueChanges().subscribe((csv) => {
       this.firestore.collection<any>('JobReq').valueChanges().subscribe((jobReq)=>{
-        for(let cv of this.csv) {
-          for(let s of cv.skill) {
-           const skill = s;
-           for(let job of jobReq) {
-            const jobSkill = job.skill;
-            for(let jSkill of jobSkill) {
-              if(skill.skill === jSkill.skill) {
-                const cvLevel = skill.level;
-                const jobLevel = jSkill.level;
-                if(cvLevel >= jobLevel) {
-                 cvArray.push(cv);
-                }
-              }
-            }
-           }
-          }
-        }
-        this.cvSubject$.next(cvArray);
+        console.log(this.csv);
+        console.log(csv)
+  //      this.cvSubject$.next(cvArray);
       });
     });
+  }
+
+  sortCandidates(candidates: any[], job: IJob) {
+    let points = 0;
+    for(let user of candidates) {
+
+    }
   }
 }
