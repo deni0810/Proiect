@@ -38,6 +38,7 @@ export class EmployeeprofileComponent {
   getJob(key: string) {
     this.jobsService.getJobByKey(key).subscribe((job) => {
       if(job) {
+        this.jobs = [];
         this.jobs.push(job);
       }
     });

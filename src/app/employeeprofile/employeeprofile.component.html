@@ -1,21 +1,18 @@
-<h1 style="color: black">HELLO FUTURE EMPLOYEE!</h1>
-<div>
-  <input
-    type="button"
-    value="Adauga CV"
-    (click)="redirectCV()"
-    class="btn btn-primary"
-  />
-</div>
-<br />
 
-<h1>Ai aplicat pentru:</h1>
-<ng-container *ngIf="jobs.length > 0">
-  <app-job-item
-    *ngFor="let job of jobs; let i = index"
-    [job]="job"
-    [jobIndex]="i"
-    [showDeleteBtn]="true"
-    (deleted)="deleteItem($event)"
-  ></app-job-item>
-</ng-container>
+<h2 style="text-align:center">Bun venit pe profil!</h2>
+
+<div class="card">
+  <img src="../../assets/img/avatar3.jpg" alt="Avatar" class="avatar" />
+  <h1>Angajat</h1>
+  <p class="title">Ai aplicat pentru:</p>
+  <ng-container *ngIf="jobs.length > 0">
+    <app-job-item
+      *ngFor="let job of jobs; let i = index"
+      [job]="job"
+      [jobIndex]="i"
+      [showDeleteBtn]="true"
+      (deleted)="deleteItem($event)"
+    ></app-job-item>
+  </ng-container>
+  <p><button (click)="redirectCV()">Adauga CV</button></p>
+</div>

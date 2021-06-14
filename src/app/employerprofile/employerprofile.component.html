@@ -1,25 +1,14 @@
+<h2 style="text-align:center">Bun venit pe profil!</h2>
 
-
-<h1 style="color:black">HELLO EMPLOYER!</h1>
-
-
-
-<div>
-  <input type="button" value="Adauga Job" (click)="redirectJobReq()" class="btn btn-primary">
+<div class="card">
+  <img src="../../assets/img/avatar3.jpg" alt="Avatar" class="avatar" />
+  <h1>Angajator</h1>
+  <p class="title">Joburi adaugate</p>
+  <ng-container *ngIf="jobs.length > 0">
+    <app-job-item *ngFor="let job of jobs; let i = index" [job]="job" [showDeleteBtn]="true"
+      (deleted)=" deleteItem($event)" [jobIndex]="i" [showUpdateBtn]="true" (update)="updateItem($event)"></app-job-item>
+  </ng-container>
+  <p><button (click)="redirectJobReq()">Adauga Job</button></p>
 </div>
 
-<br>
 
-<div class = "container">
-  <div class="jumbotron">
-
-<h3>Joburi adaugate</h3>
-
-<ng-container *ngIf="jobs.length > 0">
-  <app-job-item *ngFor="let job of jobs; let i = index" [job]="job" [showDeleteBtn]="true"
-    (deleted)=" deleteItem($event)" [jobIndex]="i" [showUpdateBtn]="true" (update)="updateItem($event)"></app-job-item>
-</ng-container>
-
-
-</div>
-</div>

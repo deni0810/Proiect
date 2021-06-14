@@ -74,13 +74,14 @@
           </mat-form-field>
 
           <mat-form-field>
-            <input
-              matInput
-              placeholder="Performanta"
-              formControlName="level"
-              autocomplete="off"
-            />
-          </mat-form-field>
+            <label>Nivel de performanta</label>
+            <mat-select formControlName="level" >
+                <mat-option value="0">Incepator</mat-option>
+                <mat-option value="1">Intermediar</mat-option>
+                <mat-option value="2">Avansat
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
           <button mat-raised-button color="warn" (click)="deleteskill('')">
             Sterge

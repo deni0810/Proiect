@@ -121,9 +121,14 @@
             </mat-form-field>
 
             <mat-form-field>
-                <label>Nivel de performanta</label>
-                <input matInput   formControlName="level" autocomplete="off">
-            </mat-form-field>
+              <label>Nivel de performanta</label>
+              <mat-select formControlName="level" >
+                  <mat-option value="0">Incepator</mat-option>
+                  <mat-option value="1">Intermediar</mat-option>
+                  <mat-option value="2">Avansat
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
 
 
             <button mat-raised-button color="warn" (click)="deleteskill('')">Sterge</button>
@@ -171,11 +176,11 @@
             <mat-form-field>
                 <label>Nivel</label>
                 <mat-select formControlName="level" >
-                    <mat-option value="1">Cunostinte practice</mat-option>
-                    <mat-option value="2">Cunostinte practice bune</mat-option>
-                    <mat-option value="3">Stapanire foarte buna a limbii</mat-option>
-                    <mat-option value="4">Stapanire foarte buna a limbii,scris si oral</mat-option>
-                    <mat-option value="5">Nativ</mat-option>
+                    <mat-option value="0">Cunostinte practice</mat-option>
+                    <mat-option value="1">Cunostinte practice bune</mat-option>
+                    <mat-option value="2">Stapanire foarte buna a limbii</mat-option>
+                    <mat-option value="3">Stapanire foarte buna a limbii,scris si oral</mat-option>
+                    <mat-option value="4">Nativ</mat-option>
                 </mat-select>
             </mat-form-field>
 
