@@ -41,7 +41,7 @@ export class AuthService {
       email,
       password,
       id,
-      token,
+      idToken,
       expiresIn,
     } = data;
     const expirationDate = new Date(new Date().getTime() + +expiresIn * 1000);
@@ -49,8 +49,8 @@ export class AuthService {
       email,
       password,
       id,
-      token,
-      expirationDate,
+      token: idToken,
+      _tokenExpirationDate: expirationDate,
     };
     localStorage.setItem('userData', JSON.stringify(user));
     this.userSubject$.next(user);
@@ -63,7 +63,7 @@ export class AuthService {
       this.router.navigate(['login']);
     } else {
       const expirationDuration =
-        new Date(user._tokenExpirationDate).getTime() - new Date().getTime();
+      new Date(user._tokenExpirationDate).getTime() - new Date().getTime();
       if (expirationDuration < 0) {
         this.logout();
       }

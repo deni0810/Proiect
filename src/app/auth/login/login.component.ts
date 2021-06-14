@@ -29,7 +29,12 @@ export class LoginComponent {
     this.authService.login(email, password).subscribe((response) => {
       this.authService.handleAuthentification(response);
       this.userService.getProfile(response.localId).subscribe((userArr) => {
-        const user = userArr[0];
+        const doc = userArr[0];
+        const userData = JSON.parse(localStorage.getItem('userData')!)
+        const user = {
+          ...userData,
+          ...doc
+        }
         localStorage.setItem('userData', JSON.stringify(user));
         this.router.navigate(['profile']);
       });

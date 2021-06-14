@@ -20,23 +20,23 @@ export class UserService {
     localStorage.setItem('userData', JSON.stringify(user));
   }
 
-  public async addAuthor(userId: string, jobDocId: string, userDocId: string) {
-    const jobRef = this.firestore.collection('JobReq').doc(jobDocId);
-    await jobRef.update({
-      jobCreators: firebase.firestore.FieldValue.arrayUnion(userId),
-    });
+  // public async addAuthor(userId: string, jobDocId: string, userDocId: string) { //! not used?!
+  //   const jobRef = this.firestore.collection('JobReq').doc(jobDocId);
+  //   await jobRef.update({
+  //     jobCreators: firebase.firestore.FieldValue.arrayUnion(userId),
+  //   });
 
-    const userRef = this.firestore.collection('profiles').doc(userDocId);
-    await userRef.update({
-      createdJobs: firebase.firestore.FieldValue.arrayUnion(jobDocId),
-    });
-    let userData = JSON.parse(localStorage.getItem('userData')!);
-    try {
-      userData.createdJobs.push(jobDocId);
-    } catch {
-      userData.createdJobs = [jobDocId];
-    }
-    localStorage.setItem('userData', JSON.stringify(userData));
-  }
+  //   const userRef = this.firestore.collection('profiles').doc(userDocId);
+  //   await userRef.update({
+  //     createdJobs: firebase.firestore.FieldValue.arrayUnion(jobDocId),
+  //   });
+  //   let userData = JSON.parse(localStorage.getItem('userData')!);
+  //   try {
+  //     userData.createdJobs.push(jobDocId);
+  //   } catch {
+  //     userData.createdJobs = [jobDocId];
+  //   }
+  //   localStorage.setItem('userData', JSON.stringify(userData));
+  // }
 
 }
