@@ -1,14 +1,21 @@
-
-
-<h1 style="color:black">HELLO FUTURE EMPLOYEE!</h1>
-
-
+<h1 style="color: black">HELLO FUTURE EMPLOYEE!</h1>
 <div>
-  <input type = "button" value = "Adauga CV" (click)="redirectCV()" class = "btn btn-primary" >
+  <input
+    type="button"
+    value="Adauga CV"
+    (click)="redirectCV()"
+    class="btn btn-primary"
+  />
 </div>
-<br>
+<br />
 
 <h1>Ai aplicat pentru:</h1>
 <ng-container *ngIf="jobs.length > 0">
-  <app-job-item *ngFor="let job of jobs; let i = index" [job]="job" [jobIndex]="i" [showDeleteBtn]="true" (deleted)="deleteItem($event)"></app-job-item>
+  <app-job-item
+    *ngFor="let job of jobs; let i = index"
+    [job]="job"
+    [jobIndex]="i"
+    [showDeleteBtn]="true"
+    (deleted)="deleteItem($event)"
+  ></app-job-item>
 </ng-container>

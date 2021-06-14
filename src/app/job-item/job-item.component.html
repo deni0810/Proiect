@@ -1,78 +1,22 @@
-<!-- <div class="container">
-  <div class="jumbotron"> -->
-<!-- {{ job.aboutjob }} - {{ job.aboutcompany }} <br />
+{{ job.aboutjob }} - {{ job.aboutcompany }} <br />
 {{ job.schedule }} <br />
-{{ job.salary }} -->
+{{ job.skill.skill }} - {{ job.skill.level }} <br />
+{{ job.exp.exp }}
+{{ job.exp.jobdetails }}
+{{ job.exp.years }} <br />
+{{ job.language.language }} - {{ job.language.level }}<br />
+{{ job.salary }}
 
-    {{ job.aboutjob }} - {{ job.aboutcompany }} <br />
-    {{ job.schedule }} <br />
-    {{ skill.skill }} -
-    {{ skill.level }} <br>
-    {{ exp.exp }}
-    {{ exp.jobdetails }}
-    {{ exp.years }} <br>
-    {{ language.language }} -
-    {{ language.level }}<br>
-    {{ job.salary }}
+<br />
 
-    <!-- <br>
-<label><b>Cerinte</b></label>
-<div *ngFor="let skill of job.skill"> -->
-     <!-- {{ skill.skill }} -
-  {{ skill.level }}
-     </div>
-
-    <br />
-    <label><b>Experienta</b></label>
-    <div *ngFor="let exp of job.exp">
-      <label>Nume job</label> - {{ exp.exp }} <br />
-      <label>Descriere</label> - {{ exp.jobdetails }} <br />
-      <label>Ani de experienta</label> - {{ exp.years }}
-    </div>
-
-    <br />
-
-    <label><b>Limbi straine cerute</b></label>
-    <div *ngFor="let language of job.language">
-      {{ language.language }} -
-      {{ language.level }}
-    </div>
-
-    <br />
-
-    <label><b>Salariu</b></label> <br />
-    {{ job.salary }} -->
-
-    <!-- <div>
-      <input
-        type="button"
-        value="Detalii"
-        (click)="openJobDetails(i)"
-        class="btn btn-primary"
-      />
-    </div>
-    <br />
-
-    <div  *ngIf="rol">
-      <input
-        *ngIf="rol == 'angajat'"
-        type="button"
-        value="Aplica"
-        (click)="Aplica(item)"
-        class="btn btn-primary"
-      />
-    </div> -->
-
-    <hr />
-
-    <br />
-
-    <div class="apply-btn" *ngIf="showDeleteBtn">
-      <button (click)="deleteItem()" class="btn btn-danger">Delete</button>
-    </div>
-    <br />
-    <div class="apply-btn" *ngIf="showUpdateBtn">
-      <button (click)="updateItem()" class="btn btn-success">Update</button>
-    </div>
-  <!-- </div>
-</div> -->
+<div class="apply-btn" *ngIf="showDeleteBtn">
+  <button (click)="deleteItem()" class="btn btn-danger">Delete</button>
+</div>
+<br />
+<div class="apply-btn" *ngIf="showUpdateBtn">
+  <button (click)="updateItem()" class="btn btn-success">Update</button>
+</div>
+<div class="apply-btn" *ngIf="showApplyBtn">
+  <button (click)="apply()" class="btn btn-success">Aplica</button>
+</div>
+<hr />

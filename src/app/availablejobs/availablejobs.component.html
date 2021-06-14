@@ -3,61 +3,16 @@
     <h1 style="text-align: center">Joburi disponibile</h1>
     <hr />
     <br />
-
-    <!-- <div  *ngFor="let item of items; let i = index">
-        <b
-          >{{ item.aboutjob }} -
-          {{ item.aboutcompany }}
-          <br />
-          {{ item.schedule }}
-          <br />
-          {{ item.town }}
-          <br />
-          {{ item.proffesion }}</b
-        >
-
-        <br />
-        <label><b>Cerinte</b></label>
-        <div *ngFor="let skill of item.skill">
-          {{ skill.skill }} -
-          {{ skill.level }}
-        </div>
-
-        <br /> -->
-
-        <!-- <div>
-          <input
-            type="button"
-            value="Detalii"
-            (click)="openJobDetails(i)"
-            class="btn btn-primary"
-          />
-        </div>
-        <br />
-
-        <div  *ngIf="rol">
-          <input
-            *ngIf="rol == 'angajat'"
-            type="button"
-            value="Aplica"
-            (click)="Aplica(item)"
-            class="btn btn-primary"
-          />
-        </div> -->
-
-
-<ul>
-    <li *ngIf="items">
-      <app-job-item
-        *ngFor="let item of items; let i = index"
-        [jobIndex]="index"
-        [job]="item"
-      ></app-job-item>
-    </li>
+    <ul>
+      <li *ngIf="jobs">
+        <app-job-item
+          *ngFor="let item of jobs; let i = index"
+          [jobIndex]="i"
+          [job]="item"
+          [showApplyBtn]="true"
+          (jobApply)="apply($event)"
+        ></app-job-item>
+      </li>
     </ul>
   </div>
 </div>
-
-
-
-<!-- <app-job-item></app-job-item> -->

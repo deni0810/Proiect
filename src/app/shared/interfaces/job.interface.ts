@@ -1,3 +1,4 @@
+import { IExperience } from "./experience.interface";
 import { ISkill } from "./skill.interface";
 
 export interface IJob {
@@ -7,8 +8,11 @@ export interface IJob {
   salary: string;
   aboutjob: string;
   schedule: string;
-  language: string;
-  exp: string;
+  language: {
+    language: string;
+    level: string;
+  };
+  exp: IExperience;
   jobCandidates: string[];
   skill: ISkill;
   createdBy: string;
