@@ -46,14 +46,15 @@
         </div> -->
 
 
-
-    <ng-container *ngIf="items">
+<ul>
+    <li *ngIf="items">
       <app-job-item
         *ngFor="let item of items; let i = index"
         [jobIndex]="index"
         [job]="item"
       ></app-job-item>
-    </ng-container>
+    </li>
+    </ul>
   </div>
 </div>
 
