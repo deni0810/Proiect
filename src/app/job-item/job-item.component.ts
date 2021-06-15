@@ -14,6 +14,7 @@ export class JobItemComponent {
   @Input() showDeleteBtn = false;
   @Input() showApplyBtn = false;
   @Input() showUpdateBtn = false;
+  @Input() showJobDetailsBtn = false;
   //!
   @Output() deleted = new EventEmitter<number>();
   @Output() update = new EventEmitter<number>();
