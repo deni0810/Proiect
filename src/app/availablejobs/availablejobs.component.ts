@@ -26,13 +26,6 @@ export class AvailablejobsComponent {
     this.rol = user.rol;
   }
 
-  openJobDetails(index: number) {
-    this.dialog.open(JobdetailsComponent, {
-      width: '800px',
-      panelClass: 'modal-no-padding',
-      data: this.jobs[index],
-    });
-  }
 
   apply(index: any) {
     const job = this.jobs[index];

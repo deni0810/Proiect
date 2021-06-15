@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { IJob } from './shared/interfaces/job.interface';
 import { IProfile } from './shared/interfaces/profile.interface';
 import { IRecommendedCandidate } from './shared/interfaces/recommended-candidate.interface';
+import { ISkill } from './shared/interfaces/skill.interface';
 
 
 
@@ -46,6 +47,27 @@ export class JobsRankingService {
     for(let certification of cv.certification) {
       for(let requiredCertification of job.certification) {
         if(certification.toString().toLowerCase() === requiredCertification.toString().toLowerCase()) {
+          points++;
+        }
+      }
+    }
+    for(let skill of cv.skill){
+      for(let requiredSkill of job.skill){
+        if(skill.toString().toLowerCase() === requiredSkill.toString().toLowerCase()){
+          points++;
+        }
+      }
+    }
+    for(let language of cv.language){
+      for(let requiredLanguage of job.language){
+        if(language.toString().toLowerCase() === requiredLanguage.toString().toLowerCase()){
+          points++;
+        }
+      }
+    }
+    for(let driver of cv.driver){
+      for(let requiredDriver of job.driver){
+        if(driver.toString().toLowerCase() === requiredDriver.toString().toLowerCase()){
           points++;
         }
       }

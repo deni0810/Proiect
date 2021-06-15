@@ -3,8 +3,8 @@
     <h1 style="text-align: center">Joburi disponibile</h1>
     <hr />
     <br />
-    <ul>
-      <li *ngIf="jobs">
+
+      <div *ngIf="jobs">
         <app-job-item
           *ngFor="let item of jobs; let i = index"
           [jobIndex]="i"
@@ -13,7 +13,6 @@
           [showJobDetailsBtn]="true"
           (jobApply)="apply($event)"
         ></app-job-item>
-      </li>
-    </ul>
+      </div>
   </div>
 </div>
