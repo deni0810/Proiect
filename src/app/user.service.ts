@@ -15,6 +15,12 @@ export class UserService {
       .valueChanges({ idField: 'docId' });
   }
 
+  getCV(id: string) {
+    return this.firestore
+      .collection<IProfile>('CVS', (ref) => ref.where('createdBy', '==', id))
+      .valueChanges({ idField: 'docId' });
+  }
+
   saveAccount(user: IProfile) {
     this.firestore.collection('profiles').add(user);
     localStorage.setItem('userData', JSON.stringify(user));

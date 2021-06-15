@@ -9,7 +9,6 @@ export class ProfileComponent {
 
   constructor() {
     const user = JSON.parse(localStorage.getItem('userData')!);
-
     this.rol = user.rol;
   }
 }

@@ -16,4 +16,5 @@ export interface IJob {
   jobCandidates: string[];
   skill: ISkill;
   createdBy: string;
+  certification: any[];
 }

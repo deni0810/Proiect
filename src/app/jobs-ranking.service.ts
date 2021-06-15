@@ -38,10 +38,17 @@ export class JobsRankingService {
     });
   }
 
-  sortCandidates(candidates: any[], job: IJob) {
+  sortCandidates(candidate: any, job: IJob) {
     let points = 0;
-    for(let user of candidates) {
-
+    const cv = candidate.cv;
+    console.log(cv.certification);
+    console.log(job);
+    for(let certification of cv.certification) {
+      for(let requiredCertification of job.certification) {
+        if(certification.toString().toLowerCase() === requiredCertification.toString().toLowerCase()) {
+          points++;
+        }
+      }
     }
   }
 }

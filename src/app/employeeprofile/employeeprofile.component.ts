@@ -1,17 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 import { JobsService } from '../jobs.service';
 import { IJob } from '../shared/interfaces/job.interface';
-
 
 @Component({
   selector: 'app-employeeprofile',
   templateUrl: './employeeprofile.component.html',
-  styleUrls: ['./employeeprofile.component.scss']
+  styleUrls: ['./employeeprofile.component.scss'],
 })
 export class EmployeeprofileComponent {
-
   items: any;
   jobs: IJob[] = [];
   @Output() deleted = new EventEmitter<number>();
@@ -19,25 +18,29 @@ export class EmployeeprofileComponent {
   showDeleteBtn!: boolean;
   @Input() index = 0;
 
-  constructor(public dialog: MatDialog,
-    private router: Router, private jobsService: JobsService) {
-      const appliedJobs = JSON.parse(localStorage.getItem('userData')!).appliedJobs;
-      if(appliedJobs) {
-        for(let job of appliedJobs) {
-          this.getJob(job);
-        }
+  constructor(
+    public dialog: MatDialog,
+    private router: Router,
+    private jobsService: JobsService,
+    private authService: AuthService
+  ) {
+    const appliedJobs = JSON.parse(
+      localStorage.getItem('userData')!
+    ).appliedJobs;
+    if (appliedJobs) {
+      for (let job of appliedJobs) {
+        this.getJob(job);
       }
     }
+  }
 
-
-  redirectCV(){
+  redirectCV() {
     this.router.navigate(['cvform']);
   }
 
-
   getJob(key: string) {
     this.jobsService.getJobByKey(key).subscribe((job) => {
-      if(job) {
+      if (job) {
         this.jobs = [];
         this.jobs.push(job);
       }
@@ -46,16 +49,24 @@ export class EmployeeprofileComponent {
 
   deleteItem(item: any) {
     let user = JSON.parse(localStorage.getItem('userData')!);
-    const job = this.jobs[item]
-    let candidateIndex =  job.jobCandidates.indexOf(user.id);
-    if(candidateIndex >=0) {
-      job.jobCandidates.splice(candidateIndex,1);
+    const job = this.jobs[item];
+    let candidateIndex = job.jobCandidates.indexOf(user.id);
+    if (candidateIndex >= 0) {
+      job.jobCandidates.splice(candidateIndex, 1);
     }
     let jobIndex = user.appliedJobs.indexOf(job.id);
-    if(jobIndex>=0) {
-      user.appliedJobs.splice(jobIndex,1);
+    if (jobIndex >= 0) {
+      user.appliedJobs.splice(jobIndex, 1);
     }
-    this.jobsService.deleteCandidate(job.id, job.jobCandidates,user.docId, user.appliedJobs);
+    this.jobsService.deleteCandidate(
+      job.id,
+      job.jobCandidates,
+      user.docId,
+      user.appliedJobs
+    );
   }
 
+  logout() {
+    this.authService.logout();
+  }
 }
