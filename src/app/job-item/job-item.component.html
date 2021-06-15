@@ -4,9 +4,11 @@
 {{ skill.skill}} - {{ skill.level }}
 </div>
 <br>
-{{ job.exp.exp }}
-{{ job.exp.jobdetails }}
-{{ job.exp.years }} <br />
+<div *ngFor="let experience of job.exp">
+  {{ experience.exp }}
+  {{ experience.jobdetails }}
+  {{ experience.years }} <br />
+</div>
 <div *ngFor = "let language of job.language">
 {{ language.language }} - {{ language.level }}
 </div>

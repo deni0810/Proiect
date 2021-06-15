@@ -10,7 +10,7 @@ export interface IJob {
   aboutjob: string;
   schedule: string;
   language: ILanguage[];
-  exp: IExperience;
+  exp: IExperience[];
   jobCandidates: string[];
   skill: ISkill[];
   createdBy: string;

@@ -31,10 +31,9 @@ export class EmployerprofileComponent {
       for (let job of response) {
         for (let candidate of job.jobCandidates) {
           this.userService.getCV(candidate).subscribe((profile) => {
-            const candidate = { jobId: job.id, cv: profile[0] };
-            // candidates.push({ jobId: job.id, ...profile });
-            // console.log(candidates);
-            this.jobsRankingService.sortCandidates(candidate, job);
+            let candidate = { jobId: job.id, cv: profile[0] };
+            candidate = this.jobsRankingService.sortCandidates(candidate, job);
+            candidates.push(candidate);
           });
         }
       }
@@ -59,7 +58,19 @@ export class EmployerprofileComponent {
       data: job,
     });
   }
+
   logout() {
     this.authService.logout();
+  }
+
+  sortCandidatesArr(candidates: any[]) {
+    let points = 0;
+    const newCandidatesArr = [];
+    for(let candidate of candidates) {
+      if(candidate.points > points) {
+        newCandidatesArr.push(candidate);
+      }
+    }
+    return newCandidatesArr;
   }
 }
