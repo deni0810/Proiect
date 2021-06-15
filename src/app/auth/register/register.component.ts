@@ -31,16 +31,13 @@ export class RegisterComponent {
     this.authService.signup(email, password).subscribe((response)=>{
       this.authService.handleAuthentification(response);
       this.router.navigate(['home']);
-      console.log(response);
       const user: IProfile = {
-
         rol: this.authForm.value.rol,
         id: response.localId
-
-
       }
       this.userService.saveAccount(user);
-      console.log(this.authForm.value);
+    },(error: any) => {
+      alert('Something went wrong!')
     });
   }
 

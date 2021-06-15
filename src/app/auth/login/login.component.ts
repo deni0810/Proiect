@@ -38,6 +38,8 @@ export class LoginComponent {
         localStorage.setItem('userData', JSON.stringify(user));
         this.router.navigate(['profile']);
       });
+    },(error: any) => {
+      alert('Something went wrong!')
     });
   }
 
