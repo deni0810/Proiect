@@ -4,15 +4,15 @@
     <hr />
     <br />
 
-      <div *ngIf="jobs">
-        <app-job-item
-          *ngFor="let item of jobs; let i = index"
-          [jobIndex]="i"
-          [job]="item"
-          [showApplyBtn]="true"
-          [showJobDetailsBtn]="true"
-          (jobApply)="apply($event)"
-        ></app-job-item>
-      </div>
+    <div *ngIf="jobs">
+      <app-job-item
+        *ngFor="let item of jobs; let i = index"
+        [jobIndex]="i"
+        [job]="item"
+        [showApplyBtn]="true"
+        [showJobDetailsBtn]="true"
+        (jobApply)="apply($event)"
+      ></app-job-item>
+    </div>
   </div>
 </div>

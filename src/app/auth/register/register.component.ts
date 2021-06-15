@@ -4,10 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { UserService } from 'src/app/user.service';
 import { IProfile } from 'src/app/shared/interfaces/profile.interface';
-
-
-
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -48,8 +44,5 @@ export class RegisterComponent {
       rol: [null, Validators.required]
     });
   }
-
-
-
 }
 

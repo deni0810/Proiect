@@ -1,5 +1,4 @@
-import { Component} from '@angular/core';
-import { JobdetailsComponent } from 'src/app/jobdetails/jobdetails.component';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { JobsService } from 'src/app/jobs.service';
 
@@ -12,20 +11,14 @@ export class AvailablejobsComponent {
   jobs: any[] = [];
   rol!: string;
 
-
-  constructor(
-    public dialog: MatDialog,
-    private service: JobsService
-  ) {
+  constructor(public dialog: MatDialog, private service: JobsService) {
     this.service.getAllJobs().subscribe((response) => {
       this.jobs = response;
-      console.log(response);
     });
 
     const user = JSON.parse(localStorage.getItem('userData')!);
     this.rol = user.rol;
   }
-
 
   apply(index: any) {
     const job = this.jobs[index];
@@ -42,5 +35,4 @@ export class AvailablejobsComponent {
       alert('Ai aplicat la acest job!');
     }
   }
-
 }

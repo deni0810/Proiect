@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IJob } from './shared/interfaces/job.interface';
-import { IProfile } from './shared/interfaces/profile.interface';
 import { IRecommendedCandidate } from './shared/interfaces/recommended-candidate.interface';
-import { ISkill } from './shared/interfaces/skill.interface';
 
 @Injectable({ providedIn: 'root' })
 export class JobsRankingService {
@@ -12,8 +9,6 @@ export class JobsRankingService {
 
   jobReq: any = [];
   csv: any = [];
-
-  constructor(private firestore: AngularFirestore) {}
 
   private cvSubject$ = new BehaviorSubject<any>(null);
   public cv$: Observable<any[]> = this.cvSubject$.asObservable();
