@@ -21,8 +21,6 @@ export class RankingComponent {
     private userService: UserService
   ) {
     this.job = data;
-    console.log(this.job);
-
     const candidates: any[] = [];
 
     for (let candidate of this.job.jobCandidates) {
@@ -30,7 +28,6 @@ export class RankingComponent {
         let candidate = { jobId: this.job.id, cv: profile[0] };
         candidate = this.jobsRankingService.sortCandidates(candidate, this.job);
         candidates.push(candidate);
-        console.log(candidate);
       });
     }
   }

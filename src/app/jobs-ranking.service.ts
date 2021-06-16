@@ -13,15 +13,9 @@ export class JobsRankingService {
   private cvSubject$ = new BehaviorSubject<any>(null);
   public cv$: Observable<any[]> = this.cvSubject$.asObservable();
 
-  // USE THIS SERVICE TO COMMUNICATE FRO JOB REQUEST TO CV FORM
-
-  // YOU WILL NEED TO ITERATE THORUGHT CANDIDATES AND TAKE ONLY THE ID, NAME, SKILLS
-
   sortCandidates(candidate: any, job: IJob) {
     let points = 0;
     const cv = candidate.cv;
-    console.log(cv);
-    console.log(job);
     for (let experience of cv.job) {
       for (let requiredExperience of job.exp) {
         if (
@@ -31,7 +25,6 @@ export class JobsRankingService {
           const start = experience.daterange.start.seconds;
           const end = experience.daterange.end.seconds;
           const years = (end - start) / 31556926;
-          console.log(years);
         }
       }
     }

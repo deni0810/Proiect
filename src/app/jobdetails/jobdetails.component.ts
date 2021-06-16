@@ -13,7 +13,6 @@ export class JobdetailsComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
     this.job = data;
-    console.log(this.job);
   }
   ngOnInit(): void {
   }

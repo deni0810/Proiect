@@ -76,7 +76,6 @@ export class JobsService {
   }
 
   async updateJob(job: IJob){
-    console.log(job);
     const jobRef = this.firestore.collection('JobReq').doc(job.id);
     await jobRef.update(job);
   }

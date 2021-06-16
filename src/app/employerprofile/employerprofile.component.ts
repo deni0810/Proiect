@@ -65,7 +65,7 @@ export class EmployerprofileComponent {
   }
 
 
-  openRanking(index: number) {
+  openRanking(index: any) {
     const job = this.jobs[index];
     this.dialog.open(RankingComponent, {
       width: '800px',

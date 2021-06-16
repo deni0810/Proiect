@@ -188,8 +188,6 @@ export class CvformComponent implements OnInit {
   async submitData(value: any) {
     const createdBy = JSON.parse(localStorage.getItem('userData')!).id;
     const data = { ...value, createdBy };
-    console.log(this.submitted);
-
     this.submitting = true;
     this.submissionForm
       .add(data)
