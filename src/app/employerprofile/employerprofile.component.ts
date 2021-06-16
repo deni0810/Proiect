@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../auth/auth.service';
 import { UserService } from '../user.service';
 import { JobsRankingService } from '../jobs-ranking.service';
+import { RankingComponent } from '../ranking/ranking.component';
 
 @Component({
   selector: 'app-employerprofile',
@@ -61,6 +62,17 @@ export class EmployerprofileComponent {
 
   logout() {
     this.authService.logout();
+  }
+
+
+  openRanking(index: number) {
+    const job = this.jobs[index];
+    this.dialog.open(RankingComponent, {
+      width: '800px',
+      panelClass: 'modal-no-padding',
+      data: job,
+
+    });
   }
 
   sortCandidatesArr(candidates: any[]) {

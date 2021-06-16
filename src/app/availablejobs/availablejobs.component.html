@@ -9,8 +9,9 @@
           *ngFor="let item of jobs; let i = index"
           [jobIndex]="i"
           [job]="item"
-          [showApplyBtn]="showApplyBtn"
+          [showApplyBtn]="rol==='angajat' ? true: false"
           [showJobDetailsBtn]="true"
+          (jobdetails) = "openJobDetails()"
           (jobApply)="apply($event)"
         ></app-job-item>
       </div>

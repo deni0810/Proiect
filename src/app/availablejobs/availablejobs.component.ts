@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { JobsService } from 'src/app/jobs.service';
+import { JobdetailsComponent } from '../jobdetails/jobdetails.component';
 
 @Component({
   selector: 'app-availablejobs',
@@ -19,9 +20,17 @@ export class AvailablejobsComponent {
 
     const user = JSON.parse(localStorage.getItem('userData')!);
     this.rol = user.rol;
-    if(user.rol === 'angajator') {
+    if(user.rol === "angajator"){
       this.showApplyBtn = false;
     }
+  }
+
+  openJobDetails() {
+    this.dialog.open(JobdetailsComponent, {
+      width: '800px',
+      panelClass: 'modal-no-padding',
+      data: this.jobs,
+    });
   }
 
   apply(index: any) {
