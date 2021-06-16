@@ -9,7 +9,7 @@
           *ngFor="let item of jobs; let i = index"
           [jobIndex]="i"
           [job]="item"
-          [showApplyBtn]="true"
+          [showApplyBtn]="showApplyBtn"
           [showJobDetailsBtn]="true"
           (jobApply)="apply($event)"
         ></app-job-item>

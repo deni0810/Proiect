@@ -10,6 +10,7 @@ import { JobsService } from 'src/app/jobs.service';
 export class AvailablejobsComponent {
   jobs: any[] = [];
   rol!: string;
+  showApplyBtn = true;
 
   constructor(public dialog: MatDialog, private service: JobsService) {
     this.service.getAllJobs().subscribe((response) => {
@@ -18,6 +19,9 @@ export class AvailablejobsComponent {
 
     const user = JSON.parse(localStorage.getItem('userData')!);
     this.rol = user.rol;
+    if(user.rol === 'angajator') {
+      this.showApplyBtn = false;
+    }
   }
 
   apply(index: any) {
