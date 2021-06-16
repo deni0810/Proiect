@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IJob } from 'src/app/shared/interfaces/job.interface';
 import { JobdetailsComponent } from 'src/app/jobdetails/jobdetails.component';
 import { MatDialog } from '@angular/material/dialog';
+import { RankingComponent } from '../ranking/ranking.component';
 @Component({
   selector: 'app-job-item',
   templateUrl: './job-item.component.html',
@@ -15,6 +16,7 @@ export class JobItemComponent {
   @Input() showApplyBtn = false;
   @Input() showUpdateBtn = false;
   @Input() showJobDetailsBtn = false;
+  @Input() showRankingBtn = false;
   //!
   @Output() deleted = new EventEmitter<number>();
   @Output() update = new EventEmitter<number>();
@@ -42,6 +44,14 @@ export class JobItemComponent {
 
   updateItem() {
     this.update.emit(this.jobIndex);
+  }
+
+  openRanking() {
+    this.dialog.open(RankingComponent, {
+      width: '800px',
+      panelClass: 'modal-no-padding',
+      data: this.job,
+    });
   }
 
 }

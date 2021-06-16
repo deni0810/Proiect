@@ -6,7 +6,7 @@
   <p class="title">Joburi adaugate</p>
   <div *ngIf="jobs.length > 0">
     <app-job-item *ngFor="let job of jobs; let i = index" [job]="job" [showDeleteBtn]="true"
-      (deleted)=" deleteItem($event)" [jobIndex]="i" [showUpdateBtn]="true" (update)="updateItem($event)"></app-job-item>
+      (deleted)=" deleteItem($event)" [jobIndex]="i" [showUpdateBtn]="true" (update)="updateItem($event)" [showRankingBtn] = "true"></app-job-item>
   </div>
   <p><button (click)="redirectJobReq()">Adauga Job</button></p>
   <button class="btn btn-danger" (click)="logout()">Logout</button>
