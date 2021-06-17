@@ -21,18 +21,14 @@ export class JobItemComponent {
   @Output() deleted = new EventEmitter<number>();
   @Output() update = new EventEmitter<number>();
   @Output() jobApply = new EventEmitter<number>();
+  @Output() jobdetails = new EventEmitter<number>();
+  @Output() jobranking = new EventEmitter<number>();
 
   constructor(
     public dialog: MatDialog,
   ) {}
 
-  openJobDetails() {
-    this.dialog.open(JobdetailsComponent, {
-      width: '800px',
-      panelClass: 'modal-no-padding',
-      data: this.job,
-    });
-  }
+
 
   apply() {
     this.jobApply.emit(this.jobIndex);
@@ -46,12 +42,13 @@ export class JobItemComponent {
     this.update.emit(this.jobIndex);
   }
 
-  openRanking() {
-    this.dialog.open(RankingComponent, {
-      width: '800px',
-      panelClass: 'modal-no-padding',
-      data: this.job,
-    });
+  openJobDetails() {
+    this.jobdetails.emit(this.jobIndex);
   }
+
+  openRanking() {
+    this.jobranking.emit(this.jobIndex);
+  }
+
 
 }

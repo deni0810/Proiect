@@ -40,6 +40,7 @@ export class RankingComponent {
         newCandidatesArr.push(candidate);
       }
     }
+    console.log(newCandidatesArr.length);
     return newCandidatesArr;
   }
 }
