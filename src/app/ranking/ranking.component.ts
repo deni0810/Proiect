@@ -5,7 +5,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../user.service';
 import { JobsRankingService } from '../jobs-ranking.service';
 
-
 @Component({
   selector: 'app-ranking',
   templateUrl: './ranking.component.html',
@@ -28,7 +27,7 @@ export class RankingComponent {
         let candidate = { jobId: data.id, cv: profile[0] }; // cred ca jobId poate sa dispara
         candidate = this.jobsRankingService.sortCandidates(candidate, data);
         candidates.push(candidate);
-        if(candidates.length === data.jobCandidates.length) {
+        if (candidates.length === data.jobCandidates.length) {
           this.cvArr = this.sortCandidatesArr(candidates);
         }
       });
@@ -36,13 +35,13 @@ export class RankingComponent {
   }
 
   sortCandidatesArr(candidates: any[]) {
-    let points = 0;
     const newCandidatesArr = [];
-    for(let candidate of candidates) {
-      if(candidate.points > points) {
-        newCandidatesArr.push(candidate);
-      }
-    }
-    return newCandidatesArr;
+    candidates.sort(function (a, b) {
+      // console.log(a, b);
+      // console.log(a.points - b.points);
+      return a.points - b.points;
+    });
+
+    return candidates.reverse();
   }
 }
