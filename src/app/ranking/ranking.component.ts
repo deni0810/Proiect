@@ -12,7 +12,8 @@ import { JobsRankingService } from '../jobs-ranking.service';
   styleUrls: ['./ranking.component.scss'],
 })
 export class RankingComponent {
-  job;
+  cvArr: any[] = [];
+
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
     private jobsRankingService: JobsRankingService,
@@ -20,14 +21,16 @@ export class RankingComponent {
     public dialog: MatDialog,
     private userService: UserService
   ) {
-    this.job = data;
     const candidates: any[] = [];
 
-    for (let candidate of this.job.jobCandidates) {
+    for (let candidate of data.jobCandidates) {
       this.userService.getCV(candidate).subscribe((profile: any[]) => {
-        let candidate = { jobId: this.job.id, cv: profile[0] };
-        candidate = this.jobsRankingService.sortCandidates(candidate, this.job);
+        let candidate = { jobId: data.id, cv: profile[0] }; // cred ca jobId poate sa dispara
+        candidate = this.jobsRankingService.sortCandidates(candidate, data);
         candidates.push(candidate);
+        if(candidates.length === data.jobCandidates.length) {
+          this.cvArr = this.sortCandidatesArr(candidates);
+        }
       });
     }
   }
@@ -40,7 +43,6 @@ export class RankingComponent {
         newCandidatesArr.push(candidate);
       }
     }
-    console.log(newCandidatesArr.length);
     return newCandidatesArr;
   }
 }
