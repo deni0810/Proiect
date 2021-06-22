@@ -45,7 +45,7 @@ export class EmployerprofileComponent {
     this.router.navigate(['jobrequest']);
   }
 
-  deleteItem(index: number) {
+  deleteItem(index: any) {
     this.service.deleteJob(this.jobs[index].id);
     this.jobs.splice(index, 1);
   }

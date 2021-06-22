@@ -28,6 +28,7 @@ export class EmployeeprofileComponent {
       localStorage.getItem('userData')!
     ).appliedJobs;
     if (appliedJobs) {
+      this.jobs = [];
       for (let job of appliedJobs) {
         this.getJob(job);
       }
@@ -41,7 +42,6 @@ export class EmployeeprofileComponent {
   getJob(key: string) {
     this.jobsService.getJobByKey(key).subscribe((job) => {
       if (job) {
-        this.jobs = [];
         this.jobs.push(job);
       }
     });

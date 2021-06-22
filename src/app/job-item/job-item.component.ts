@@ -18,7 +18,7 @@ export class JobItemComponent {
   @Input() showJobDetailsBtn = false;
   @Input() showRankingBtn = false;
   //!
-  @Output() deleted = new EventEmitter<number>();
+  @Output() deletedJob = new EventEmitter<number>();
   @Output() update = new EventEmitter<number>();
   @Output() jobApply = new EventEmitter<number>();
   @Output() jobdetails = new EventEmitter<number>();
@@ -35,7 +35,7 @@ export class JobItemComponent {
   }
 
   deleteItem() {
-    this.deleted.emit(this.jobIndex);
+    this.deletedJob.emit(this.jobIndex);
   }
 
   updateItem() {
