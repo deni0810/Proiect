@@ -47,7 +47,7 @@ export class EmployeeprofileComponent {
     });
   }
 
-  deleteItem(item: any) {
+  deleteItem(item: number) {
     let user = JSON.parse(localStorage.getItem('userData')!);
     const job = this.jobs[item];
     let candidateIndex = job.jobCandidates.indexOf(user.id);

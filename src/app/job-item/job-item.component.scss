@@ -11,4 +11,14 @@
   width: 800px;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  margin: auto;
+  .btn {
+    margin-top: 8px;
+  }
+}
+
 

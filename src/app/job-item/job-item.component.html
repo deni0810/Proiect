@@ -16,27 +16,12 @@
 {{ job.salary }}
 <br />
 
-
-<div class="apply-btn" *ngIf="showDeleteBtn">
-  <button (click)="deleteItem()" class="btn btn-danger">Delete</button>
-</div>
-<br />
-<div class="apply-btn" *ngIf="showUpdateBtn">
-  <button (click)="updateItem()" class="btn btn-success">Update</button>
-</div>
-<div class="apply-btn" *ngIf="showApplyBtn">
-  <button (click)="apply()" class="btn btn-success">Aplica</button>
+<div class="buttons">
+  <button *ngIf="showDeleteBtn" (click)="deleteItem()" class="btn btn-danger">Delete</button>
+  <button *ngIf="showUpdateBtn" (click)="updateItem()" class="btn btn-success">Update</button>
+  <button *ngIf="showApplyBtn" (click)="apply()" class="btn btn-success">Aplica</button>
+  <button *ngIf="showJobDetailsBtn" (click)="openJobDetails()" class="btn btn-success">Detalii Job</button>
+  <button *ngIf="showRankingBtn" (click)="openRanking()" class="btn btn-success">Clasament</button>
 </div>
 <br>
-<div class="apply-btn" *ngIf="showJobDetailsBtn">
-  <button (click)="openJobDetails()" class="btn btn-success">Detalii Job</button>
-</div>
-<br>
-<div class="apply-btn" *ngIf="showRankingBtn">
-  <button (click)="openRanking()" class="btn btn-success">Clasament</button>
-</div>
-
-
-<br>
-
 <hr>
