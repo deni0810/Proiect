@@ -16,55 +16,57 @@ export class JobsRankingService {
   sortCandidates(candidate: any, job: IJob) {
     let points = 0;
     const cv = candidate.cv;
-    for (let experience of cv.job) {
-      for (let requiredExperience of job.exp) {
-        if (
-          experience.title.toString().toLowerCase() ===
-          requiredExperience.exp.toString().toLowerCase()
-        ) {
-          const start = experience.daterange.start.seconds;
-          const end = experience.daterange.end.seconds;
-          const years = (end - start) / 31556926;
+    if(cv) {
+      for (let experience of cv.job) {
+        for (let requiredExperience of job.exp) {
+          if (
+            experience.title.toString().toLowerCase() ===
+            requiredExperience.exp.toString().toLowerCase()
+          ) {
+            const start = experience.daterange.start.seconds;
+            const end = experience.daterange.end.seconds;
+            const years = (end - start) / 31556926;
+          }
         }
       }
-    }
-    for (let certification of cv.certification) {
-      for (let requiredCertification of job.certification) {
-        if (
-          certification.toString().toLowerCase() ===
-          requiredCertification.toString().toLowerCase()
-        ) {
-          points++;
+      for (let certification of cv.certification) {
+        for (let requiredCertification of job.certification) {
+          if (
+            certification.toString().toLowerCase() ===
+            requiredCertification.toString().toLowerCase()
+          ) {
+            points++;
+          }
         }
       }
-    }
-    for (let skill of cv.skill) {
-      for (let requiredSkill of job.skill) {
-        if (
-          skill.toString().toLowerCase() ===
-          requiredSkill.toString().toLowerCase()
-        ) {
-          points++;
+      for (let skill of cv.skill) {
+        for (let requiredSkill of job.skill) {
+          if (
+            skill.toString().toLowerCase() ===
+            requiredSkill.toString().toLowerCase()
+          ) {
+            points++;
+          }
         }
       }
-    }
-    for (let language of cv.language) {
-      for (let requiredLanguage of job.language) {
-        if (
-          language.toString().toLowerCase() ===
-          requiredLanguage.toString().toLowerCase()
-        ) {
-          points++;
+      for (let language of cv.language) {
+        for (let requiredLanguage of job.language) {
+          if (
+            language.toString().toLowerCase() ===
+            requiredLanguage.toString().toLowerCase()
+          ) {
+            points++;
+          }
         }
       }
-    }
-    for (let driver of cv.driver) {
-      for (let requiredDriver of job.driver) {
-        if (
-          driver.toString().toLowerCase() ===
-          requiredDriver.toString().toLowerCase()
-        ) {
-          points++;
+      for (let driver of cv.driver) {
+        for (let requiredDriver of job.driver) {
+          if (
+            driver.toString().toLowerCase() ===
+            requiredDriver.toString().toLowerCase()
+          ) {
+            points++;
+          }
         }
       }
     }

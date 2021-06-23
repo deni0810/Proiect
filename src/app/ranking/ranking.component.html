@@ -1,10 +1,14 @@
-<h1><b>Clasament</b></h1><br>
-<hr>
+<h1><b>Clasament</b></h1>
+<br />
+<hr />
 <div *ngFor="let candidate of cvArr">
-  <b>{{ candidate.cv.fname }}
-  {{ candidate.cv.lname }} - Scor: {{ candidate.points}}</b> <br>
-  {{ candidate.cv.email}} <br>
-  {{ candidate.cv.profession}}
-
+  <ng-container *ngIf="candidate.cv">
+    <b
+      >{{ candidate.cv.fname }} {{ candidate.cv.lname }} - Scor:
+      {{ candidate.points }}</b
+    >
+    <br />
+    {{ candidate.cv.email }} <br />
+    {{ candidate.cv.profession }}
+  </ng-container>
 </div>
-
