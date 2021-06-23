@@ -25,11 +25,11 @@ export class AvailablejobsComponent {
     }
   }
 
-  openJobDetails() {
+  openJobDetails(index: number) {
     this.dialog.open(JobdetailsComponent, {
       width: '800px',
       panelClass: 'modal-no-padding',
-      data: this.jobs,
+      data: this.jobs[index],
     });
   }
 

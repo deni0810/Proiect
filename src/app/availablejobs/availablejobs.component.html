@@ -11,7 +11,7 @@
           [job]="item"
           [showApplyBtn]="rol==='angajat' ? true: false"
           [showJobDetailsBtn]="true"
-          (jobdetails) = "openJobDetails()"
+          (jobdetails)="openJobDetails(i)"
           (jobApply)="apply($event)"
         ></app-job-item>
       </div>
