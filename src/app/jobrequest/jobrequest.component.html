@@ -286,6 +286,7 @@
       <br />
 
       <input
+        *ngIf="!job.createdBy"
         type="submit"
         value="Submit"
         [disabled]="myForm.invalid"

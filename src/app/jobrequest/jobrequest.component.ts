@@ -39,9 +39,9 @@ export class JobrequestComponent implements OnInit {
     this.job = data;
   }
 
-  sortCandidatesByRanking() {
-    return this.jobsRankingService.recommendedCandidates.sort();
-  }
+  // sortCandidatesByRanking() {
+  //   return this.jobsRankingService.recommendedCandidates.sort();
+  // }
 
   ngOnInit() {
     this.firestore
@@ -65,6 +65,21 @@ export class JobrequestComponent implements OnInit {
       driver: this.fb.array([]),
       terms: ['', Validators.requiredTrue],
     });
+
+    if(this.job) {
+      for(let language of this.job.language) {
+        this.addlanguage(language);
+      }
+      for(let exp of this.job.exp) {
+        this.addexp(exp);
+      }
+      for(let certification of this.job.certification) {
+        this.addcertification(certification);
+      }
+      for(let driver of this.job.driver) {
+        this.adddriver(driver);
+      }
+    }
   }
 
   get skillForms() {
@@ -88,10 +103,10 @@ export class JobrequestComponent implements OnInit {
     return this.myForm.get('language') as FormArray;
   }
 
-  addlanguage() {
+  addlanguage(lang?: any) {
     const language = this.fb.group({
-      language: ['', [Validators.required]],
-      level: ['', [Validators.required]],
+      language: [lang? lang.language:'', [Validators.required]],
+      level: [lang? lang.level:'', [Validators.required]],
     });
 
     this.languageForms.push(language);
@@ -105,14 +120,14 @@ export class JobrequestComponent implements OnInit {
     return this.myForm.get('exp') as FormArray;
   }
 
-  addexp() {
-    const exp = this.fb.group({
-      exp: ['', [Validators.required]],
-      years: ['', [Validators.required]],
-      jobdetails: ['', [Validators.required]],
+  addexp(experience: any = null) {
+    const newExp = this.fb.group({
+      exp: [experience? experience.exp:'', [Validators.required]],
+      years: [experience? experience.years:'', [Validators.required]],
+      jobdetails: [experience? experience.jobdetails:'', [Validators.required]],
     });
 
-    this.expForms.push(exp);
+    this.expForms.push(newExp);
   }
 
   deleteexp(i: any) {
@@ -123,9 +138,9 @@ export class JobrequestComponent implements OnInit {
     return this.myForm.get('certification') as FormArray;
   }
 
-  addcertification() {
+  addcertification(certif: any = null) {
     const certification = this.fb.group({
-      certification: [''],
+      certification: [certif? certif.certification:''],
     });
 
     this.certificationForms.push(certification);
@@ -139,9 +154,9 @@ export class JobrequestComponent implements OnInit {
     return this.myForm.get('driver') as FormArray;
   }
 
-  adddriver() {
+  adddriver(driverLicense: any = null) {
     const driver = this.fb.group({
-      driver: [''],
+      driver: [driverLicense? driverLicense.driver:''],
     });
 
     this.driverForms.push(driver);
